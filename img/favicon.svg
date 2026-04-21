@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="none"
+   viewBox="0 0 24 24"
+   stroke-width="1.5"
+   stroke="currentColor"
+   class="size-6"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="presentation.svg"
+   inkscape:export-filename="presentation.png"
+   inkscape:export-xdpi="4096"
+   inkscape:export-ydpi="4096"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="23.570226"
+     inkscape:cx="6.7882251"
+     inkscape:cy="12.727922"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     d="m 2.9642869,2.14293 v 12.321428 c -2e-7,1.360988 1.103298,2.464286 2.4642854,2.464286 H 7.8928578 M 2.9642869,2.14293 H 1.32143 m 1.6428569,0 H 21.035713 m 0,0 h 1.642857 m -1.642857,0 v 12.321428 c 0,1.360987 -1.103298,2.464286 -2.464285,2.464286 h -2.464285 m -8.2142852,0 h 8.2142852 m -8.2142852,0 -1.095238,3.285714 m 9.3095232,-3.285714 1.095238,3.285714 m 0,0 L 17.75,21.857215 M 17.202381,20.214358 H 6.7976198 m 0,0 -0.547619,1.642857"
+     id="path1"
+     style="display:inline;stroke-width:1.64286"
+     sodipodi:nodetypes="cssccccccccssccccccccccccc" />
+  <text
+     xml:space="preserve"
+     style="font-size:7.91928px;line-height:1;font-family:'Nothing You Could Do';-inkscape-font-specification:'Nothing You Could Do';letter-spacing:0.0544451px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;fill:#000000;stroke:#000000;stroke-width:0.405863;stroke-opacity:1"
+     x="5.151464"
+     y="10.393663"
+     id="text7"><tspan
+       sodipodi:role="line"
+       id="tspan7"
+       x="5.151464"
+       y="10.393663"
+       style="stroke-width:0.405863">J</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:7.9858px;line-height:1;font-family:'Nothing You Could Do';-inkscape-font-specification:'Nothing You Could Do';letter-spacing:0.0549024px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;fill:#000000;stroke:#000000;stroke-width:0.409271;stroke-opacity:1"
+     x="8.4672194"
+     y="12.581153"
+     id="text8"><tspan
+       sodipodi:role="line"
+       id="tspan8"
+       x="8.4672194"
+       y="12.581153"
+       style="stroke-width:0.409271">D</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:7.95715px;line-height:1;font-family:'Nothing You Could Do';-inkscape-font-specification:'Nothing You Could Do';letter-spacing:0.0547055px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;fill:#000000;stroke:#000000;stroke-width:0.407804;stroke-opacity:1"
+     x="13.742195"
+     y="14.655159"
+     id="text9"><tspan
+       sodipodi:role="line"
+       id="tspan9"
+       x="13.742195"
+       y="14.655159"
+       style="stroke-width:0.407804">S</tspan></text>
+</svg>

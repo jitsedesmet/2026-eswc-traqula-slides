@@ -1,0 +1,15 @@
+* {
+    --rq-color: #d9d2e9;
+}
+
+.title {
+    line-height: 3em;
+}
+.title h1 {
+    font-size: 2rem;
+    line-height: 2em;
+}
+
+.mono {
+    font-family: monospace;
+}

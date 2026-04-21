@@ -1,0 +1,21 @@
+{
+  "name": "2026-eswc-traqula-resource-slides",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.html",
+  "author": "Jitse De Smet",
+  "license": "MIT",
+  "scripts": {
+    "dev": "shower serve",
+    "pdf": "shower pdf -o ./img/slides.pdf",
+    "archive": "shower archive",
+    "build": "shower bundle"
+  },
+  "dependencies": {
+      "@shower/core": "^3.3.0",
+      "@shower/material": "^2.5.1"
+  },
+  "devDependencies": {
+    "@shower/cli": "^0.3.1"
+  }
+}

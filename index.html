@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="foaf: http://xmlns.com/foaf/0.1/">
+    <title>Traqula: Providing a Foundation for The Evolving SPARQL Ecosystem Through Modular Query Parsing, Transformation, and Generation | Jitse De Smet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" href="img/favicon.png"/>
+
+    <link rel="stylesheet" href="styles/presentation-specific.css">
+    <link rel="stylesheet" href="node_modules/@shower/material/styles/styles.css">
+    <link rel="stylesheet" href="styles/custom-slides.css">
+    <link rel="stylesheet" href="styles/custom-overview.css">
+
+    <link rel="foaf:maker" href="https://jitsedesmet.be/profile#me" />
+    <link rel="me" href="https://mastodon.social/@smetje007"/>
+
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+        }
+    </style>
+</head>
+<body class="shower list" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# foaf: http://xmlns.com/foaf/0.1/ owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# org: http://www.w3.org/ns/org# schema: http://schema.org/ cite: http://purl.org/spar/cito/" typeof="schema:PresentationDigitalDocument">
+<header class="caption" style="position: relative;">
+    <div class="title">
+        <a href="/"><h1 property="schema:name">Traqula: Providing a Foundation for The Evolving SPARQL Ecosystem Through Modular Query Parsing, Transformation, and Generation</h1></a>
+    </div>
+    <div class="captiondata">
+        <p class="author" rel="schema:author" resource="https://jitsedesmet.be/profile/#me"><a href="https://jitsedesmet.be/"><strong>Jitse De Smet</strong></a></p>
+        <p class="author" rel="schema:author" resource="https://www.rubensworks.net/#me"><a href="https://www.rubensworks.net/">Ruben Taelman</a></p>
+        <div class="venue">
+            <a href="https://2026.eswc-conferences.org/">ESWC 2026</a> <a href="https://2026.eswc-conferences.org/calls/papers-resource-track/">Resource Track</a> supporting slides for
+            <a href="https://traqula-resource.jitsedesmet.be/">Traqula Resource</a>, <span rel="schema:datePublished">11 May 2026</span></a>
+        </div>
+
+        <a class="pure" href="./img/slides.pdf">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
+                 style="height: 1em; fill: white; position: absolute; right: 0.5em; bottom: 0.5em">
+                <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M240 112L128 112C119.2 112 112 119.2 112 128L112 512C112 520.8 119.2 528 128 528L208 528L208 576L128 576C92.7 576 64 547.3 64 512L64 128C64 92.7 92.7 64 128 64L261.5 64C278.5 64 294.8 70.7 306.8 82.7L429.3 205.3C441.3 217.3 448 233.6 448 250.6L448 400.1L400 400.1L400 272.1L312 272.1C272.2 272.1 240 239.9 240 200.1L240 112.1zM380.1 224L288 131.9L288 200C288 213.3 298.7 224 312 224L380.1 224zM272 444L304 444C337.1 444 364 470.9 364 504C364 537.1 337.1 564 304 564L292 564L292 592C292 603 283 612 272 612C261 612 252 603 252 592L252 464C252 453 261 444 272 444zM304 524C315 524 324 515 324 504C324 493 315 484 304 484L292 484L292 524L304 524zM400 444L432 444C460.7 444 484 467.3 484 496L484 560C484 588.7 460.7 612 432 612L400 612C389 612 380 603 380 592L380 464C380 453 389 444 400 444zM432 572C438.6 572 444 566.6 444 560L444 496C444 489.4 438.6 484 432 484L420 484L420 572L432 572zM508 464C508 453 517 444 528 444L576 444C587 444 596 453 596 464C596 475 587 484 576 484L548 484L548 508L576 508C587 508 596 517 596 528C596 539 587 548 576 548L548 548L548 592C548 603 539 612 528 612C517 612 508 603 508 592L508 464z"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+<section id="title" class="slide title" rel="schema:hasPart" resource="#title">
+    <h1 property="schema:name">Traqula: Providing a Foundation for The Evolving SPARQL Ecosystem Through Modular Query Parsing, Transformation, and Generation</h1>
+    <ul class="author inline">
+        <li class="current"><a href="https://jitsedesmet.be/">Jitse De Smet</a></li>
+        <li><a href="https://www.rubensworks.net/">Ruben Taelman</a></li>
+    </ul>
+    <p class="affiliation"><a href="http://idlab.technology/">Ghent University – imec – IDLab, Belgium</a></p>
+    <p class="affiliation"><a href="https://www.fwo.be/en/">Research Foundation - Flanders</a></p>
+    <span class="place bottom right num"></span>
+</section>
+
+<section class="badge">
+    <p class="license" style="margin-top: auto">
+        &#169; <span property="schema:copyrightYear">2026</span>
+        <a href="https://jitsedesmet.be/" rel="schema:copyrightHolder"><span resource="https://jitsedesmet.be/profile/#me">Jitse De Smet</span></a>
+        <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" property="schema:license">Creative Commons Attribution 4.0</a>, unless otherwise indicated.
+    </p>
+    <a href="https://github.com/jitsedesmet/2026-eswc-traqula-slides" style="display: flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: center;
+        gap: 0.2rem;">
+        <svg aria-hidden="true" viewBox="0 0 24 24" version="1.1" data-view-component="true"
+             class="octicon octicon-mark-github v-align-middle">
+            <path d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z"></path>
+        </svg>
+        <span>Source</span></a>
+</section>
+
+<script src="node_modules/@shower/core/dist/shower.js"></script>
+</body>
+</html>
