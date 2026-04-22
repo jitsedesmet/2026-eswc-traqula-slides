@@ -72,14 +72,12 @@
 
 <!-- ─── Problem ─────────────────────────────────────────────────────────────── -->
 
-<section id="sparql-dialects" class="slide" rel="schema:hasPart" resource="#sparql-dialects">
+<section id="sparql-dialects" class="slide" rel="schema:hasPart" resource="#sparql-dialects"
+         style="display: flex; flex-direction: column;">
     <h2 property="schema:name">SPARQL is not one language</h2>
-    <ul>
-        <li>Standard versions: SPARQL&nbsp;1.0 → 1.1 → 1.2&nbsp;(in&nbsp;progress)</li>
-        <li>Vendor <strong>extensions</strong>: Virtuoso (full-text search), Jena (quad&nbsp;construction), Oxigraph&nbsp;(<code>ADJUST</code>)</li>
-        <li>Vendor <strong>restrictions</strong>: some endpoints drop expensive operators (e.g.&nbsp;<code>OPTIONAL</code>)</li>
-        <li>W3C entering maintenance mode → <em>faster</em> version evolution ahead</li>
-    </ul>
+    <img src="img/sparql-dialects.svg"
+         alt="SPARQL version timeline with vendor extensions (Jena, Virtuoso, Oxigraph) and restrictions"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
@@ -87,45 +85,24 @@
 
 <section id="federation-challenge" class="slide" rel="schema:hasPart" resource="#federation-challenge"
          style="display: flex; flex-direction: column;">
-    <h2 property="schema:name">Federated queries meet dialect diversity</h2>
+    <h2 property="schema:name">One query — four incompatible endpoints</h2>
     <img src="https://traqula-resource.jitsedesmet.be/img/traqula-federation.svg"
          alt="A SPARQL 1.2 federated query targeting four endpoints with different SPARQL versions and extensions"
-         style="flex: 1; max-height: 68%; align-self: center; object-fit: contain; margin: auto 0;">
+         style="flex: 1; max-height: 65%; align-self: center; object-fit: contain; margin: auto 0;">
+    <p style="text-align: center; margin: 0.4rem 0 0; font-size: 0.95em; color: var(--color-prim-light);">
+        One query · four endpoints · four dialect profiles → <strong>bridging is essential</strong>
+    </p>
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
 </section>
 
-<section id="challenges" class="slide" rel="schema:hasPart" resource="#challenges">
+<section id="challenges" class="slide" rel="schema:hasPart" resource="#challenges"
+         style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Three key challenges</h2>
-    <ol>
-        <li style="margin-bottom: 1rem;"><strong>Query evaluation</strong> &mdash; a SPARQL&nbsp;1.2 query may fail on older endpoints</li>
-        <li style="margin-bottom: 1rem;"><strong>Tooling</strong> &mdash; linters, editors, and formatters assume a single SPARQL version</li>
-        <li style="margin-bottom: 1rem;"><strong>Maintainability</strong> &mdash; multi-version support leads to messy, hard-to-maintain code</li>
-    </ol>
-
-    <span class="traqula-brand"></span>
-    <span class="place bottom right num"></span>
-</section>
-
-<section id="existing-parsers" class="slide" rel="schema:hasPart" resource="#existing-parsers">
-    <h2 property="schema:name">Existing parsers don't cover all needs</h2>
-    <div style="display: flex; gap: 2rem; margin-top: 0.5rem; align-items: center;">
-        <div style="flex: 1.1">
-            <p style="margin-bottom: 0.6rem;">13 of 16 popular parsers use <strong>generated grammars</strong> (ANTLR, Bison, JavaCC…)</p>
-            <ul>
-                <li>No rule-level modularity</li>
-                <li>No round-tripping</li>
-                <li>Not web-native</li>
-                <li>Language-specific compilation step</li>
-            </ul>
-        </div>
-        <div style="flex: 0.9; display: flex; align-items: center; justify-content: center;">
-            <p style="font-size: 1.4em; font-weight: bold; color: var(--color-sec); text-align: center; line-height: 1.5;">
-                None satisfies<br>all four needs
-            </p>
-        </div>
-    </div>
+    <img src="img/challenges.svg"
+         alt="Three challenge cards: query evaluation, tooling, and maintainability"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
@@ -146,83 +123,67 @@
     <span class="place bottom right num"></span>
 </section>
 
+<section id="requirements" class="slide" rel="schema:hasPart" resource="#requirements"
+         style="display: flex; flex-direction: column;">
+    <h2 property="schema:name">What a solution must provide</h2>
+    <img src="img/requirements.svg"
+         alt="Four requirements: Flexibility, Round-tripping, Web-based, Language-agnostic"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
+
+    <span class="traqula-brand"></span>
+    <span class="place bottom right num"></span>
+</section>
+
+<section id="existing-parsers" class="slide" rel="schema:hasPart" resource="#existing-parsers"
+         style="display: flex; flex-direction: column;">
+    <h2 property="schema:name">Existing parsers leave a gap</h2>
+    <img src="img/parser-comparison.svg"
+         alt="Matrix comparing Apache Jena, SPARQL.js, Stardog Millan, and Traqula against the four requirements"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
+
+    <span class="traqula-brand"></span>
+    <span class="place bottom right num"></span>
+</section>
+
 <section id="what-is-traqula" class="slide" rel="schema:hasPart" resource="#what-is-traqula"
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Introducing Traqula</h2>
-    <div style="display: flex; align-items: center; gap: 2rem; flex: 1;">
-        <ul style="flex: 1.2;">
-            <li>Modular SPARQL toolkit</li>
-            <li>🔍 <strong>Parsing</strong> &mdash; query string → AST or algebra</li>
-            <li>✏️ <strong>Generation</strong> &mdash; AST or algebra → query string</li>
-            <li>🔄 <strong>Transformation</strong> &mdash; rewrite queries between dialects</li>
-            <li>TypeScript &middot; runs in browsers and Node.js</li>
-        </ul>
-        <div style="flex: 0.8; display: flex; justify-content: center;">
-            <img src="https://raw.githubusercontent.com/comunica/traqula/refs/heads/main/assets/red-on-none/logo-red-on-white-lettered.svg"
-                 alt="Traqula logo"
-                 style="width: 85%; max-width: 280px;">
-        </div>
-    </div>
+    <img src="img/traqula-pipeline.svg"
+         alt="Traqula pipeline: Query String → Parse → AST (round-trippable) → Generate → Query String', with Algebra branch for semantic transformations"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
+
+    <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
 </section>
 
 <section id="representations" class="slide" rel="schema:hasPart" resource="#representations"
          style="display: flex; flex-direction: column;">
-    <h2 property="schema:name">Three query representations</h2>
+    <h2 property="schema:name">AST vs. algebra — two distinct representations</h2>
     <img src="https://traqula-resource.jitsedesmet.be/img/traqula-representations.svg"
          alt="Query string (blue), AST (green), and algebra (orange) representations with arrows showing parsing, generation, and algebra transformation"
-         style="flex: 1; max-height: 70%; align-self: center; object-fit: contain; margin: auto 0;">
+         style="flex: 1; max-height: 68%; align-self: center; object-fit: contain; margin: auto 0;">
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
 </section>
 
-<section id="modularity" class="slide" rel="schema:hasPart" resource="#modularity">
+<section id="modularity" class="slide" rel="schema:hasPart" resource="#modularity"
+         style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Plug-and-play grammar rules</h2>
-    <div style="display: flex; gap: 2rem; align-items: flex-start; margin-top: 0.3rem;">
-        <div style="flex: 1;">
-            <p>Each rule is a <strong>named module</strong>:</p>
-            <ul>
-                <li>Add a rule for a new language feature</li>
-                <li>Remove a rule to restrict the language</li>
-                <li>Patch a rule to change its behavior</li>
-            </ul>
-            <p style="margin-top: 0.6rem;">Assemble parsers, generators,<br>and transformers from these modules.</p>
-        </div>
-        <pre style="flex: 1; font-size: 0.65em; line-height: 1.5; background: #f0f4f8; padding: 0.8em; border-radius: 4px; margin: 0;"><code>// Base IRI generator
-const base = GeneratorBuilder
-  .create([iriFull, prefixedIri])
-  .addRule(iri);
-
-// Patch it for a custom dialect
-const custom = GeneratorBuilder
-  .create(base)
-  .patchRule(altPrefixedRule)
-  .build();</code></pre>
-    </div>
+    <img src="img/modular-rule-map.svg"
+         alt="Builder-based dependency injection: named rule map, add/patch/remove operations, and TypeScript builder API"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
 </section>
 
-<section id="round-tripping" class="slide" rel="schema:hasPart" resource="#round-tripping">
-    <h2 property="schema:name">Round-tripping: change only what you intend</h2>
-    <div style="margin-top: 0.6rem;">
-        <p>Parse → transform at AST level → regenerate = only intentional changes</p>
-        <div style="display: flex; align-items: center; gap: 1rem; margin: 0.8rem 0;">
-            <div style="flex: 1; background: #f0f4f8; padding: 0.7em; border-radius: 4px; font-family: monospace;">
-                <strong>Before</strong><br>
-                <code>SelECT * { ?s&nbsp;&nbsp;&nbsp;?p ?o }</code>
-            </div>
-            <div style="font-size: 2em; color: var(--color-sec);">→</div>
-            <div style="flex: 1; background: #f0f4f8; padding: 0.7em; border-radius: 4px; font-family: monospace;">
-                <strong>Rename <code>?s</code> → <code>?subject</code></strong><br>
-                <code>SelECT * { ?subject&nbsp;&nbsp;&nbsp;?p ?o }</code>
-            </div>
-        </div>
-        <p>Spacing, casing, and punctuation are <strong>preserved</strong></p>
-        <p>Enables: linters &middot; formatters &middot; refactoring tools &middot; language servers</p>
-    </div>
+<section id="round-tripping" class="slide" rel="schema:hasPart" resource="#round-tripping"
+         style="display: flex; flex-direction: column;">
+    <h2 property="schema:name">Round-tripping: only intentional changes</h2>
+    <img src="img/round-trip-flow.svg"
+         alt="Round-trip flow: parse with source positions → rename AST node → generate → only ?s changed to ?subject; spacing and casing preserved"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
@@ -303,29 +264,38 @@ const custom = GeneratorBuilder
     <span class="place bottom right num"></span>
 </section>
 
-<section id="adoption" class="slide" rel="schema:hasPart" resource="#adoption">
+<section id="adoption" class="slide" rel="schema:hasPart" resource="#adoption"
+         style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Already in production</h2>
-    <ul>
-        <li>Integrated into <a href="https://comunica.dev/"><strong>Comunica</strong></a> SPARQL query engine</li>
-        <li><strong>6&thinsp;269 tests</strong> &middot; 94% line coverage</li>
-        <li>MIT license &middot; <a href="https://github.com/comunica/traqula">GitHub</a> &middot; npm</li>
-        <li>Maintained by the <strong>Comunica association</strong> — distributed, long-term sustainability</li>
-    </ul>
+    <img src="img/adoption-stats.svg"
+         alt="Traqula adoption: Comunica integration, 6269 tests, 94% coverage, MIT license, Comunica Association maintenance"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
 </section>
 
-<section id="conclusion" class="slide" rel="schema:hasPart" resource="#conclusion">
+<section id="conclusion" class="slide" rel="schema:hasPart" resource="#conclusion"
+         style="display: flex; flex-direction: column; justify-content: center;">
     <h2 property="schema:name">Conclusion</h2>
-    <ul>
-        <li>SPARQL dialect heterogeneity is a <strong>growing challenge</strong></li>
-        <li>Traqula: <strong>modular</strong> &middot; round-trippable &middot; web-native &middot; fast</li>
-        <li>Foundation for: federated SPARQL &middot; linters &middot; formatters &middot; language servers</li>
-        <li>Open-source resource for the community</li>
-    </ul>
-    <p style="margin-top: 1.5rem; text-align: center; font-size: 1.1em;">
+    <div style="display: flex; gap: 2rem; align-items: stretch; margin-top: 0.8rem; flex: 1; max-height: 70%;">
+        <div style="flex: 1; background: #e8f0f8; border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid var(--color-prim);">
+            <p style="font-size: 1em; font-weight: bold; color: var(--color-prim); margin: 0 0 0.5rem;">The Problem</p>
+            <p style="margin: 0; font-size: 0.9em; color: var(--color-prim-light);">SPARQL dialect heterogeneity is a <strong>growing challenge</strong> for federated querying and tooling</p>
+        </div>
+        <div style="flex: 1; background: #e8f7ee; border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid #2a9d5c;">
+            <p style="font-size: 1em; font-weight: bold; color: #1a4e66; margin: 0 0 0.5rem;">The Solution</p>
+            <p style="margin: 0; font-size: 0.9em; color: #267499;">Traqula: <strong>modular</strong> · round-trippable · web-native · <strong>10× faster</strong> than alternatives</p>
+        </div>
+        <div style="flex: 1; background: #fff0e0; border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid var(--color-sec);">
+            <p style="font-size: 1em; font-weight: bold; color: #1a4e66; margin: 0 0 0.5rem;">The Impact</p>
+            <p style="margin: 0; font-size: 0.9em; color: #267499;">Foundation for federated SPARQL · linters · formatters · language servers · future query languages</p>
+        </div>
+    </div>
+    <p style="margin-top: 1.2rem; text-align: center; font-size: 1.05em;">
         <a href="https://github.com/comunica/traqula">github.com/comunica/traqula</a>
+        &nbsp;·&nbsp;
+        <a href="https://traqula-resource.jitsedesmet.be/">traqula-resource.jitsedesmet.be</a>
     </p>
 
     <span class="traqula-brand"></span>

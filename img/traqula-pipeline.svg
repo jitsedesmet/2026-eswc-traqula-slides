@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 310" font-family="'Open Sans', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="900" height="310" fill="#f6fdf5" rx="10"/>
+
+  <!-- ── Input Query String ──────────────────────────── -->
+  <rect x="20" y="108" width="130" height="56" rx="8" fill="#dce8f0" stroke="#1a4e66" stroke-width="2"/>
+  <text x="85" y="130" text-anchor="middle" font-size="11" fill="#1a4e66" font-weight="bold">Query String</text>
+  <text x="85" y="148" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">SELECT * WHERE {</text>
+  <text x="85" y="159" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">  ?s ?p ?o }</text>
+
+  <!-- Arrow: Input → Parser -->
+  <line x1="150" y1="136" x2="192" y2="136" stroke="#1a4e66" stroke-width="2"/>
+  <polygon points="188,131 200,136 188,141" fill="#1a4e66"/>
+
+  <!-- ── Parser box ──────────────────────────────────── -->
+  <rect x="200" y="116" width="96" height="40" rx="8" fill="#1a4e66"/>
+  <text x="248" y="141" text-anchor="middle" font-size="13" fill="white" font-weight="bold">Parser</text>
+
+  <!-- Arrow: Parser → AST -->
+  <line x1="296" y1="136" x2="338" y2="136" stroke="#1a4e66" stroke-width="2"/>
+  <polygon points="334,131 346,136 334,141" fill="#1a4e66"/>
+
+  <!-- ── AST box ──────────────────────────────────────── -->
+  <rect x="346" y="100" width="118" height="72" rx="8" fill="#e8f7ee" stroke="#2a9d5c" stroke-width="2"/>
+  <text x="405" y="122" text-anchor="middle" font-size="13" fill="#1a4e66" font-weight="bold">AST</text>
+  <text x="405" y="140" text-anchor="middle" font-size="10" fill="#2a9d5c">Source-preserving</text>
+  <text x="405" y="155" text-anchor="middle" font-size="10" fill="#2a9d5c">Round-trippable ↺</text>
+
+  <!-- Arrow: AST → Transformer (AST level) -->
+  <line x1="464" y1="136" x2="506" y2="136" stroke="#2a9d5c" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="502,131 514,136 502,141" fill="#2a9d5c"/>
+  <text x="487" y="128" text-anchor="middle" font-size="9" fill="#2a9d5c">transform</text>
+
+  <!-- Arrow: AST → Generator (top path – right side) -->
+  <line x1="514" y1="136" x2="566" y2="136" stroke="#2a9d5c" stroke-width="2"/>
+  <polygon points="562,131 574,136 562,141" fill="#2a9d5c"/>
+
+  <!-- ── Generator box ───────────────────────────────── -->
+  <rect x="574" y="116" width="96" height="40" rx="8" fill="#1a4e66"/>
+  <text x="622" y="141" text-anchor="middle" font-size="13" fill="white" font-weight="bold">Generator</text>
+
+  <!-- Arrow: Generator → Output -->
+  <line x1="670" y1="136" x2="712" y2="136" stroke="#1a4e66" stroke-width="2"/>
+  <polygon points="708,131 720,136 708,141" fill="#1a4e66"/>
+
+  <!-- ── Output Query String ─────────────────────────── -->
+  <rect x="720" y="108" width="156" height="56" rx="8" fill="#dce8f0" stroke="#1a4e66" stroke-width="2"/>
+  <text x="798" y="130" text-anchor="middle" font-size="11" fill="#1a4e66" font-weight="bold">Query String'</text>
+  <text x="798" y="148" text-anchor="middle" font-size="10" fill="#2a9d5c" font-style="italic">Only intentional</text>
+  <text x="798" y="160" text-anchor="middle" font-size="10" fill="#2a9d5c" font-style="italic">changes applied ↺</text>
+
+  <!-- ── Algebra branch (downward from AST) ─────────── -->
+  <!-- Arrow: AST → Algebra (downward) -->
+  <line x1="405" y1="172" x2="405" y2="212" stroke="#e26c22" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="400,208 405,222 410,208" fill="#e26c22"/>
+  <text x="430" y="198" font-size="9" fill="#e26c22">algebra</text>
+  <text x="430" y="210" font-size="9" fill="#e26c22">conversion</text>
+
+  <!-- ── Algebra box ─────────────────────────────────── -->
+  <rect x="330" y="222" width="148" height="66" rx="8" fill="#fff0e0" stroke="#e26c22" stroke-width="2"/>
+  <text x="404" y="245" text-anchor="middle" font-size="13" fill="#1a4e66" font-weight="bold">Algebra</text>
+  <text x="404" y="263" text-anchor="middle" font-size="10" fill="#e26c22">Semantic / canonical</text>
+  <text x="404" y="278" text-anchor="middle" font-size="10" fill="#e26c22">Source info discarded</text>
+
+  <!-- Arrow: Algebra → Algebra Transformer -->
+  <line x1="478" y1="255" x2="526" y2="255" stroke="#e26c22" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="522,250 534,255 522,260" fill="#e26c22"/>
+  <text x="500" y="247" text-anchor="middle" font-size="9" fill="#e26c22">rewrite</text>
+
+  <!-- ── Algebra' box ────────────────────────────────── -->
+  <rect x="534" y="222" width="148" height="66" rx="8" fill="#fff0e0" stroke="#e26c22" stroke-width="2"/>
+  <text x="608" y="245" text-anchor="middle" font-size="13" fill="#1a4e66" font-weight="bold">Algebra'</text>
+  <text x="608" y="263" text-anchor="middle" font-size="10" fill="#e26c22">Used by query engines</text>
+  <text x="608" y="278" text-anchor="middle" font-size="10" fill="#e26c22">Dialect bridging</text>
+
+  <!-- ── Labels at top ──────────────────────────────── -->
+  <!-- Green AST path label -->
+  <rect x="20" y="18" width="860" height="28" rx="6" fill="none"/>
+  <text x="430" y="28" text-anchor="middle" font-size="11" fill="#2a9d5c" font-weight="bold">▲ AST path — source-preserving, enables round-tripping</text>
+  <text x="430" y="44" text-anchor="middle" font-size="11" fill="#e26c22">▼ Algebra path — semantic/canonical, used by query engines for dialect bridging</text>
+
+  <!-- ── TypeScript badge ───────────────────────────── -->
+  <rect x="730" y="224" width="152" height="62" rx="8" fill="white" stroke="#267499" stroke-width="1.5"/>
+  <text x="806" y="244" text-anchor="middle" font-size="11" fill="#1a4e66" font-weight="bold">TypeScript</text>
+  <text x="806" y="260" text-anchor="middle" font-size="10" fill="#267499">Browser · Node.js</text>
+  <text x="806" y="276" text-anchor="middle" font-size="10" fill="#267499">Bun · Deno · Electron</text>
+</svg>
