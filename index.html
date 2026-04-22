@@ -51,7 +51,7 @@
     <p class="affiliation"><a href="http://idlab.technology/">Ghent University – imec – IDLab, Belgium</a></p>
     <p class="affiliation"><a href="https://www.fwo.be/en/">Research Foundation - Flanders</a></p>
 
-    <img src="https://raw.githubusercontent.com/comunica/traqula/refs/heads/main/assets/red-on-none/logo-red-on-white-lettered.svg"
+    <img src="img/traqula-logo.svg"
          class="img-center"
          style="right: 25%; bottom: 35%; height: 70%">
     <span class="place bottom right num"></span>
@@ -86,7 +86,7 @@
 <section id="federation-challenge" class="slide" rel="schema:hasPart" resource="#federation-challenge"
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">One query — four incompatible endpoints</h2>
-    <img src="https://traqula-resource.jitsedesmet.be/img/traqula-federation.svg"
+    <img src="img/traqula-federation.svg"
          alt="A SPARQL 1.2 federated query targeting four endpoints with different SPARQL versions and extensions"
          style="flex: 1; max-height: 65%; align-self: center; object-fit: contain; margin: auto 0;">
     <p style="text-align: center; margin: 0.4rem 0 0; font-size: 0.95em; color: var(--color-prim-light);">
@@ -159,9 +159,9 @@
 <section id="representations" class="slide" rel="schema:hasPart" resource="#representations"
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">AST vs. algebra — two distinct representations</h2>
-    <img src="https://traqula-resource.jitsedesmet.be/img/traqula-representations.svg"
-         alt="Query string (blue), AST (green), and algebra (orange) representations with arrows showing parsing, generation, and algebra transformation"
-         style="flex: 1; max-height: 68%; align-self: center; object-fit: contain; margin: auto 0;">
+    <img src="img/representations.svg"
+         alt="Three representations of a SPARQL query: query string (blue), AST (green), algebra (orange), with arrows showing parse, generate (round-trip), and algebra conversion"
+         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
@@ -208,40 +208,24 @@
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">~10× faster than existing tools</h2>
     <div style="display: flex; gap: 2rem; flex: 1; align-items: center;">
-        <div style="flex: 0.9;">
-            <p style="margin-bottom: 0.5rem;">Benchmark: 50 real-world DBpedia queries</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Tool</th>
-                        <th>Mean&nbsp;time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Traqula (AST)</td>
-                        <td><strong style="color: var(--color-sec);">2.5&thinsp;ms</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Traqula (algebra)</td>
-                        <td><strong style="color: var(--color-sec);">3.6&thinsp;ms</strong></td>
-                    </tr>
-                    <tr>
-                        <td>SPARQL.js (AST)</td>
-                        <td>23.9&thinsp;ms</td>
-                    </tr>
-                    <tr>
-                        <td>SPARQLAlgebra.js</td>
-                        <td>24.0&thinsp;ms</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="margin-top: 0.8rem; color: var(--color-sec); font-size: 0.9em;">Flexibility does not cost performance</p>
+        <div style="flex: 1.3; display: flex; justify-content: center; align-items: center;">
+            <img src="img/performance-bar.svg"
+                 alt="Mean execution time bar chart: Traqula 2.5ms vs SPARQL.js 23.9ms — approximately 10× faster"
+                 style="max-height: 230px; width: 100%; object-fit: contain;">
         </div>
-        <div style="flex: 1.1; display: flex; justify-content: center; align-items: center;">
-            <img src="https://traqula-resource.jitsedesmet.be/img/barplot_means.svg"
-                 alt="Mean execution time bar chart comparing Traqula with SPARQL.js and SPARQLAlgebra.js"
-                 style="max-height: 240px; width: 100%; object-fit: contain;">
+        <div style="flex: 0.85; font-size: 0.9em; line-height: 1.6;">
+            <p style="margin: 0 0 0.6rem; font-weight: bold; color: var(--color-prim);">Key findings</p>
+            <ul style="margin: 0; padding-left: 1.2em; color: var(--color-prim-light);">
+                <li>50 real-world <strong>DBpedia</strong> queries</li>
+                <li>Traqula AST: <strong style="color: var(--color-sec);">2.5 ms</strong></li>
+                <li>SPARQL.js: <strong>23.9 ms</strong></li>
+                <li>Flexibility does <em>not</em> cost performance</li>
+                <li>SPARQL 1.2 only <strong>10.8% slower</strong> than 1.1</li>
+                <li>Round-trip adds <strong>18.8%</strong> overhead</li>
+            </ul>
+            <p style="margin-top: 0.6rem; font-size: 0.85em; color: var(--color-prim-light);">
+                Thanks to <strong>Chevrotain</strong>'s optimised V8 runtime + parser reuse
+            </p>
         </div>
     </div>
 

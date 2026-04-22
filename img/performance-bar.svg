@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" font-family="'Open Sans', Arial, sans-serif">
+  <defs>
+    <linearGradient id="barGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a9d5c"/>
+      <stop offset="100%" stop-color="#4ec67a"/>
+    </linearGradient>
+    <linearGradient id="barGrey" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8fa8be"/>
+      <stop offset="100%" stop-color="#b0c4d8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="520" height="260" fill="#f6fdf5" rx="8"/>
+
+  <!-- Title -->
+  <text x="260" y="22" text-anchor="middle" font-size="13" fill="#1a4e66" font-weight="bold">Mean parse time · 50 DBpedia queries</text>
+
+  <!-- Y-axis labels (tool names) -->
+  <!-- Row 1: Traqula AST -->
+  <text x="166" y="58" text-anchor="end" font-size="11.5" fill="#1a4e66" font-weight="bold">Traqula (AST)</text>
+  <!-- Row 2: Traqula algebra -->
+  <text x="166" y="98" text-anchor="end" font-size="11.5" fill="#1a4e66" font-weight="bold">Traqula (algebra)</text>
+  <!-- Row 3: SPARQL.js -->
+  <text x="166" y="146" text-anchor="end" font-size="11.5" fill="#8fa8be">SPARQL.js</text>
+  <!-- Row 4: SPARQLAlgebra.js -->
+  <text x="166" y="186" text-anchor="end" font-size="11.5" fill="#8fa8be">SPARQLAlgebra.js</text>
+
+  <!-- Axis line -->
+  <line x1="172" y1="35" x2="172" y2="205" stroke="#1a4e66" stroke-width="1.5"/>
+  <line x1="172" y1="205" x2="510" y2="205" stroke="#1a4e66" stroke-width="1.5"/>
+
+  <!-- Grid lines (subtle) — at 5ms, 10ms, 15ms, 20ms, 25ms -->
+  <!-- Scale: 0–26ms maps to x=172–510, so 1ms = (510-172)/26 = 13px -->
+  <line x1="237" y1="35" x2="237" y2="205" stroke="#d0dce8" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="302" y1="35" x2="302" y2="205" stroke="#d0dce8" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="367" y1="35" x2="367" y2="205" stroke="#d0dce8" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="432" y1="35" x2="432" y2="205" stroke="#d0dce8" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="497" y1="35" x2="497" y2="205" stroke="#d0dce8" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- X-axis tick labels -->
+  <text x="172" y="218" text-anchor="middle" font-size="10" fill="#267499">0</text>
+  <text x="237" y="218" text-anchor="middle" font-size="10" fill="#267499">5ms</text>
+  <text x="302" y="218" text-anchor="middle" font-size="10" fill="#267499">10ms</text>
+  <text x="367" y="218" text-anchor="middle" font-size="10" fill="#267499">15ms</text>
+  <text x="432" y="218" text-anchor="middle" font-size="10" fill="#267499">20ms</text>
+  <text x="497" y="218" text-anchor="middle" font-size="10" fill="#267499">25ms</text>
+
+  <!-- Bar 1: Traqula AST  2.5ms  → width = 2.5 × 13 = 32.5px -->
+  <rect x="172" y="42" width="33" height="28" rx="3" fill="url(#barGreen)"/>
+  <text x="210" y="61" font-size="12" fill="#2a9d5c" font-weight="bold">2.5 ms</text>
+
+  <!-- Bar 2: Traqula algebra  3.6ms → width = 3.6 × 13 = 46.8px -->
+  <rect x="172" y="82" width="47" height="28" rx="3" fill="url(#barGreen)"/>
+  <text x="224" y="101" font-size="12" fill="#2a9d5c" font-weight="bold">3.6 ms</text>
+
+  <!-- Bar 3: SPARQL.js  23.9ms → width = 23.9 × 13 = 310.7px -->
+  <rect x="172" y="130" width="311" height="28" rx="3" fill="url(#barGrey)"/>
+  <text x="488" y="149" text-anchor="end" font-size="12" fill="#8fa8be">23.9 ms</text>
+
+  <!-- Bar 4: SPARQLAlgebra.js  24.0ms → width = 24.0 × 13 = 312px -->
+  <rect x="172" y="170" width="312" height="28" rx="3" fill="url(#barGrey)"/>
+  <text x="489" y="189" text-anchor="end" font-size="12" fill="#8fa8be">24.0 ms</text>
+
+  <!-- ≈10× bracket annotation -->
+  <line x1="505" y1="56" x2="505" y2="182" stroke="#e26c22" stroke-width="1.5"/>
+  <line x1="500" y1="56" x2="510" y2="56" stroke="#e26c22" stroke-width="1.5"/>
+  <line x1="500" y1="182" x2="510" y2="182" stroke="#e26c22" stroke-width="1.5"/>
+  <text x="515" y="125" font-size="13" fill="#e26c22" font-weight="bold">~10×</text>
+
+  <!-- Footnote -->
+  <text x="260" y="244" text-anchor="middle" font-size="9.5" fill="#267499" font-style="italic">Flexibility does not cost performance</text>
+</svg>

@@ -1,75 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" font-family="'Open Sans', Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 Z" fill="#1a4e66"/>
+    </marker>
+    <marker id="arrOrange" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 Z" fill="#e26c22"/>
+    </marker>
+  </defs>
+
   <!-- Background -->
   <rect width="900" height="340" fill="#f6fdf5" rx="10"/>
 
   <!-- Section label -->
-  <text x="450" y="34" text-anchor="middle" font-size="15" fill="#1a4e66" font-weight="bold" letter-spacing="1">SPARQL STANDARD VERSIONS</text>
+  <text x="450" y="30" text-anchor="middle" font-size="14" fill="#1a4e66" font-weight="bold" letter-spacing="1">SPARQL STANDARD VERSIONS</text>
 
   <!-- Timeline arrow -->
-  <line x1="90" y1="82" x2="790" y2="82" stroke="#1a4e66" stroke-width="2.5" stroke-linecap="round"/>
-  <polygon points="786,75 804,82 786,89" fill="#1a4e66"/>
+  <line x1="100" y1="76" x2="790" y2="76" stroke="#1a4e66" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr)"/>
 
   <!-- SPARQL 1.0 node -->
-  <circle cx="175" cy="82" r="32" fill="#1a4e66"/>
-  <text x="175" y="78" text-anchor="middle" fill="white" font-size="15" font-weight="bold">SPARQL</text>
-  <text x="175" y="95" text-anchor="middle" fill="white" font-size="15" font-weight="bold">1.0</text>
-  <text x="175" y="130" text-anchor="middle" fill="#267499" font-size="12">2008</text>
+  <circle cx="190" cy="76" r="32" fill="#1a4e66"/>
+  <text x="190" y="71" text-anchor="middle" fill="white" font-size="14" font-weight="bold">SPARQL</text>
+  <text x="190" y="88" text-anchor="middle" fill="white" font-size="14" font-weight="bold">1.0</text>
+  <text x="190" y="122" text-anchor="middle" fill="#267499" font-size="11">2008</text>
 
   <!-- SPARQL 1.1 node -->
-  <circle cx="450" cy="82" r="32" fill="#267499"/>
-  <text x="450" y="78" text-anchor="middle" fill="white" font-size="15" font-weight="bold">SPARQL</text>
-  <text x="450" y="95" text-anchor="middle" fill="white" font-size="15" font-weight="bold">1.1</text>
-  <text x="450" y="130" text-anchor="middle" fill="#267499" font-size="12">2013</text>
+  <circle cx="460" cy="76" r="32" fill="#267499"/>
+  <text x="460" y="71" text-anchor="middle" fill="white" font-size="14" font-weight="bold">SPARQL</text>
+  <text x="460" y="88" text-anchor="middle" fill="white" font-size="14" font-weight="bold">1.1</text>
+  <text x="460" y="122" text-anchor="middle" fill="#267499" font-size="11">2013</text>
 
   <!-- SPARQL 1.2 node -->
-  <circle cx="725" cy="82" r="32" fill="#e26c22"/>
-  <text x="725" y="78" text-anchor="middle" fill="white" font-size="15" font-weight="bold">SPARQL</text>
-  <text x="725" y="95" text-anchor="middle" fill="white" font-size="15" font-weight="bold">1.2</text>
-  <text x="725" y="130" text-anchor="middle" fill="#267499" font-size="12">2025</text>
+  <circle cx="730" cy="76" r="32" fill="#e26c22"/>
+  <text x="730" y="71" text-anchor="middle" fill="white" font-size="14" font-weight="bold">SPARQL</text>
+  <text x="730" y="88" text-anchor="middle" fill="white" font-size="14" font-weight="bold">1.2</text>
+  <text x="730" y="122" text-anchor="middle" fill="#e26c22" font-size="11">2025</text>
 
-  <!-- Extensions label -->
-  <text x="22" y="168" font-size="11" fill="#e26c22" font-weight="bold" transform="rotate(-90 22 168)">EXTENSIONS</text>
+  <!-- "Vendor extensions" label at left -->
+  <text x="32" y="167" font-size="11" fill="#267499" font-weight="bold">VENDOR EXTENSIONS →</text>
 
   <!-- Connecting lines from versions to extension cards -->
-  <line x1="175" y1="114" x2="175" y2="165" stroke="#267499" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <line x1="450" y1="114" x2="360" y2="165" stroke="#267499" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <line x1="450" y1="114" x2="540" y2="165" stroke="#267499" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <line x1="725" y1="114" x2="725" y2="165" stroke="#e26c22" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="190" y1="108" x2="176" y2="152" stroke="#267499" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="460" y1="108" x2="366" y2="152" stroke="#267499" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="460" y1="108" x2="546" y2="152" stroke="#267499" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="730" y1="108" x2="730" y2="152" stroke="#e26c22" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrOrange)"/>
 
   <!-- Apache Jena extension card -->
-  <rect x="95" y="165" width="162" height="72" rx="8" fill="#e8f0f8" stroke="#267499" stroke-width="1.5"/>
-  <text x="176" y="188" text-anchor="middle" font-size="12" fill="#1a4e66" font-weight="bold">Apache Jena</text>
-  <text x="176" y="206" text-anchor="middle" font-size="11" fill="#267499">+ quad construction</text>
-  <text x="176" y="222" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">e.g. GRAPH ?g { ... }</text>
+  <rect x="94" y="152" width="162" height="72" rx="8" fill="#e8f0f8" stroke="#267499" stroke-width="1.5"/>
+  <text x="175" y="175" text-anchor="middle" font-size="12" fill="#1a4e66" font-weight="bold">Apache Jena</text>
+  <text x="175" y="193" text-anchor="middle" font-size="11" fill="#267499">+ quad construction</text>
+  <text x="175" y="209" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">GRAPH ?g { ... }</text>
 
   <!-- Virtuoso extension card -->
-  <rect x="280" y="165" width="162" height="72" rx="8" fill="#e8f0f8" stroke="#267499" stroke-width="1.5"/>
-  <text x="361" y="188" text-anchor="middle" font-size="12" fill="#1a4e66" font-weight="bold">Virtuoso</text>
-  <text x="361" y="206" text-anchor="middle" font-size="11" fill="#267499">+ full-text search</text>
-  <text x="361" y="222" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">bif:contains(?s, "hello")</text>
+  <rect x="284" y="152" width="162" height="72" rx="8" fill="#e8f0f8" stroke="#267499" stroke-width="1.5"/>
+  <text x="365" y="175" text-anchor="middle" font-size="12" fill="#1a4e66" font-weight="bold">Virtuoso</text>
+  <text x="365" y="193" text-anchor="middle" font-size="11" fill="#267499">+ full-text search</text>
+  <text x="365" y="209" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">bif:contains(?s, "…")</text>
 
   <!-- Oxigraph extension card -->
-  <rect x="460" y="165" width="162" height="72" rx="8" fill="#e8f0f8" stroke="#267499" stroke-width="1.5"/>
-  <text x="541" y="188" text-anchor="middle" font-size="12" fill="#1a4e66" font-weight="bold">Oxigraph</text>
-  <text x="541" y="206" text-anchor="middle" font-size="11" fill="#267499">+ ADJUST function</text>
-  <text x="541" y="222" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">ADJUST(?dt, ?tz)</text>
+  <rect x="464" y="152" width="162" height="72" rx="8" fill="#e8f0f8" stroke="#267499" stroke-width="1.5"/>
+  <text x="545" y="175" text-anchor="middle" font-size="12" fill="#1a4e66" font-weight="bold">Oxigraph</text>
+  <text x="545" y="193" text-anchor="middle" font-size="11" fill="#267499">+ ADJUST function</text>
+  <text x="545" y="209" text-anchor="middle" font-size="10" fill="#267499" font-style="italic">ADJUST(?dt, ?tz)</text>
 
-  <!-- Restriction card -->
-  <rect x="644" y="165" width="162" height="72" rx="8" fill="#fdf0e8" stroke="#e26c22" stroke-width="1.5"/>
-  <text x="725" y="188" text-anchor="middle" font-size="12" fill="#e26c22" font-weight="bold">Some Endpoints</text>
-  <text x="725" y="206" text-anchor="middle" font-size="11" fill="#e26c22">− OPTIONAL removed</text>
-  <text x="725" y="222" text-anchor="middle" font-size="10" fill="#e26c22" font-style="italic">(too expensive)</text>
+  <!-- Restriction card (red/orange) -->
+  <rect x="648" y="152" width="162" height="72" rx="8" fill="#fde8e8" stroke="#cc3333" stroke-width="1.5"/>
+  <text x="729" y="171" text-anchor="middle" font-size="11" fill="#cc3333" font-weight="bold">Some Endpoints</text>
+  <text x="729" y="189" text-anchor="middle" font-size="11" fill="#cc3333">− OPTIONAL removed</text>
+  <text x="729" y="205" text-anchor="middle" font-size="10" fill="#cc3333" font-style="italic">(too expensive)</text>
+  <!-- Big ✗ restriction indicator -->
+  <text x="729" y="218" text-anchor="middle" font-size="11" fill="#cc3333" font-weight="bold">⚠ restriction</text>
+
+  <!-- Incompatibility clash indicator between extension and restriction -->
+  <line x1="626" y1="188" x2="648" y2="188" stroke="#cc3333" stroke-width="2" stroke-dasharray="3,2"/>
 
   <!-- Divider -->
-  <line x1="50" y1="265" x2="850" y2="265" stroke="#d0dce8" stroke-width="1"/>
+  <line x1="50" y1="252" x2="850" y2="252" stroke="#d0dce8" stroke-width="1"/>
 
-  <!-- W3C Maintenance Mode note -->
-  <rect x="50" y="278" width="800" height="44" rx="8" fill="#fff8e1" stroke="#e26c22" stroke-width="1.5"/>
-  <!-- Lightning bolt icon -->
-  <text x="74" y="306" font-size="20" fill="#e26c22">⚡</text>
-  <text x="98" y="306" font-size="13" fill="#1a4e66" font-weight="bold">W3C Maintenance Mode: </text>
-  <text x="98" y="306" font-size="13" fill="#1a4e66">
-    <tspan font-weight="bold">W3C Maintenance Mode: </tspan>
-    <tspan fill="#e26c22">more SPARQL versions and dialects expected — heterogeneity will grow</tspan>
-  </text>
+  <!-- W3C Maintenance Mode note (improved) -->
+  <rect x="50" y="264" width="800" height="60" rx="8" fill="#fff8e1" stroke="#e26c22" stroke-width="2"/>
+  <text x="74" y="291" font-size="20" fill="#e26c22">⚡</text>
+  <text x="100" y="284" font-size="13" fill="#1a4e66" font-weight="bold">W3C Working Group enters Maintenance Mode</text>
+  <text x="100" y="302" font-size="12" fill="#e26c22">→ Faster SPARQL releases expected  ·  Heterogeneity will grow further</text>
+  <text x="100" y="318" font-size="11.5" fill="#1a4e66" font-style="italic">Each new version / extension adds another dialect that tools must handle</text>
 </svg>
