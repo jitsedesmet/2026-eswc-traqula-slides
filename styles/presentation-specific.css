@@ -6,10 +6,25 @@
     line-height: 3em;
 }
 .title h1 {
-    font-size: 2rem;
-    line-height: 2em;
 }
 
 .mono {
     font-family: monospace;
+}
+
+.img-center {
+    position: absolute;
+    transform: translate(50%, 50%);
+}
+
+.traqula-brand {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('https://raw.githubusercontent.com/comunica/traqula/refs/heads/main/assets/red-on-none/logo-red-on-white-lettered.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 25px;
+    bottom: 10px;
 }
