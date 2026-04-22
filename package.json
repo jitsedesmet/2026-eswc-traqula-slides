@@ -12,8 +12,8 @@
     "build": "shower bundle"
   },
   "dependencies": {
-      "@shower/core": "^3.3.0",
-      "@shower/material": "^2.5.1"
+    "@shower/core": "^3.3.0",
+    "@shower/material": "^2.5.1"
   },
   "devDependencies": {
     "@shower/cli": "^0.3.1"

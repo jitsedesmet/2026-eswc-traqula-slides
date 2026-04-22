@@ -7,6 +7,7 @@
   "mounts": [
     "source=${localWorkspaceFolder}/.devcontainer/config.json,target=/home/node/.copilot/config.json,type=bind",
   ],
+  forwardPorts: [8080],
   "remoteUser": "node",
   "postCreateCommand": "curl -fsSL https://gh.io/copilot-install | bash",
   "customizations" : {
