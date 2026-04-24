@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="204.48709mm"
+   height="84.490837mm"
+   viewBox="0 0 204.48709 84.490837"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="parse-generate.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#ffffff"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.5216119"
+     inkscape:cx="386.4323"
+     inkscape:cy="208.3317"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker4"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Triangle-5"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135-0" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.43603,-29.084919)">
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:35.2777px;line-height:0;font-family:'Rounded Mplus 1c Bold';-inkscape-font-specification:'Rounded Mplus 1c Bold, Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;stroke:none;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:1000"
+       x="57.190796"
+       y="66.825005"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans Bold';fill:#ffffff;stroke:none;stroke-width:3"
+         x="57.190796"
+         y="66.825005">Parse</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:35.2777px;line-height:0;font-family:'Rounded Mplus 1c Bold';-inkscape-font-specification:'Rounded Mplus 1c Bold, Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;stroke:none;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:1000"
+       x="25.323736"
+       y="113.23125"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans Bold';fill:#ffffff;stroke:none;stroke-width:3"
+         x="25.323736"
+         y="113.23125">Generate</tspan></text>
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:1000;stroke-opacity:1;marker-end:url(#marker4)"
+       d="M 24.13125,100.63084 C -23.38875,78.727089 11.409813,26.561713 48.633748,39.555463"
+       id="path2"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:1000;stroke-opacity:1;marker-end:url(#Triangle-5)"
+       d="m 147.17316,46.876105 c 39.6644,-34.127121 72.66059,19.196574 45.37809,47.659245"
+       id="path2-3"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

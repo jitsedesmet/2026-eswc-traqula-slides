@@ -144,9 +144,8 @@
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Three key challenges</h2>
 
-    <div class="card" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
         <div class="numbered-card">
-            <div class="numbered-card__number">1</div>
             <h3 class="numbered-card__title">Query Evaluation</h3>
             <p class="numbered-card__body">
                 A SPARQL 1.2 query may fail on an older SPARQL endpoint
@@ -158,7 +157,6 @@
             </div>
         </div>
         <div class="numbered-card">
-            <div class="numbered-card__number">2</div>
             <h3 class="numbered-card__title">Tooling</h3>
             <p class="numbered-card__body">
                 Linters, Editors, and formatters assume a single SPARQL version
@@ -170,7 +168,6 @@
             </div>
         </div>
         <div class="numbered-card">
-            <div class="numbered-card__number">3</div>
             <h3 class="numbered-card__title">Maintainability</h3>
             <p class="numbered-card__body">
                 Multi-version support <br>
@@ -203,12 +200,81 @@
     <span class="place bottom right num"></span>
 </section>
 
-<section id="requirements" class="slide" rel="schema:hasPart" resource="#requirements"
-         style="display: flex; flex-direction: column;">
-    <h2 property="schema:name">What a solution must provide</h2>
-    <img src="img/requirements.svg"
-         alt="Four requirements: Flexibility, Round-tripping, Web-based, Language-agnostic"
-         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
+<section id="requirements" class="slide" rel="schema:hasPart" resource="#requirements">
+    <h2 property="schema:name">A solution must provide</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+        <div class="card card-1">
+            <div class="header">
+                <div class="visual">
+                    <span class="pill pill-add">A<span class="pill-tag">+</span></span>
+                    <span class="pill pill-remove">B<span class="pill-tag">−</span></span>
+                    <span class="pill pill-patch">C<span class="pill-tag">~</span></span>
+                </div>
+                <div class="card-caption">add <code>A</code> · remove <code>B</code> · patch <code>C</code></div>
+            </div>
+            <div class="body">
+                <h3>Flexibility</h3>
+                <p>
+                    Compose parsers,<br>
+                    generators &amp; transformers <br>
+                    from small, reusable <br>
+                    grammar rule modules
+                </p>
+                <div class="footer">Experiment with SPARQL</div>
+            </div>
+        </div>
+
+        <div class="card card-2">
+            <div class="header">
+                <object width="110px" data="img/parse-generate.svg"  type="image/svg+xml"></object>
+                <div class="card-caption">Source details preserved</div>
+            </div>
+            <div class="body">
+                <h3>Round-tripping</h3>
+                <p>Parse → transform → regenerate:
+                    only the intentional <br> change is reflected</p>
+                <div class="footer">Enables linters &amp; formatters</div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card card-3">
+            <div class="header">
+                <div class="visual">
+                    <div class="browser">
+                        <div class="dots"><span></span><span></span></div>
+                        <div class="window"></div>
+                    </div>
+                </div>
+                <div class="card-caption">Browser · Node.js</div>
+            </div>
+            <div class="body">
+                <h3>Web-based</h3>
+                <p>TypeScript/ JavaScript <br> Runs in browsers <br> and server-side <br> (Node.js, Bun, Deno)</p>
+                <div class="footer">Widest developer reach</div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card card-4">
+            <div class="header">
+                <div class="visual" style="flex-wrap:wrap;">
+                    <span class="pill pill-grey">SPARQL</span>
+                    <span class="pill pill-orange">SHACL</span>
+                    <span class="pill pill-blue">GQL</span>
+                    <span class="pill pill-orange">RML</span>
+                    <span class="pill pill-blue">SQL</span>
+                </div>
+                <div class="card-caption">Generic core, any language</div>
+            </div>
+            <div class="body">
+                <h3>Language-agnostic</h3>
+                <p>Generic core <br> can support  many languages <br> SPARQL, SHACL-Compact, GQL and other languages</p>
+                <div class="footer">Reusable framework</div>
+            </div>
+        </div>
+    </div>
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
