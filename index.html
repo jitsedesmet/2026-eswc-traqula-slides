@@ -30,7 +30,7 @@
         <p class="author" rel="schema:author" resource="https://www.rubensworks.net/#me"><a href="https://www.rubensworks.net/">Ruben Taelman</a></p>
         <div class="venue">
             <a href="https://2026.eswc-conferences.org/">ESWC 2026</a> <a href="https://2026.eswc-conferences.org/calls/papers-resource-track/">Resource Track</a> supporting slides for
-            <a href="https://traqula-resource.jitsedesmet.be/">Traqula Resource</a>, <span rel="schema:datePublished">11 May 2026</span></a>
+            <a href="https://traqula-resource.jitsedesmet.be/">Traqula Resource</a>, <span rel="schema:datePublished">11 May 2026</span>
         </div>
 
         <a class="pure" href="./img/slides.pdf">
@@ -170,7 +170,7 @@
         <div class="numbered-card">
             <h3 class="numbered-card__title">Tooling</h3>
             <p class="numbered-card__body">
-                Linters, Editors, and formatters assume a single SPARQL version
+                Linters, editors, and formatters assume a single SPARQL version
             </p>
             <div class="numbered-card__highlight">
                 IDE, linter, language server<br>
@@ -182,7 +182,7 @@
             <h3 class="numbered-card__title">Maintainability</h3>
             <p class="numbered-card__body">
                 Multi-version support <br>
-                → messy hard to maintain code
+                → messy, hard-to-maintain code
             </p>
             <div class="numbered-card__highlight">
                 <code>if SPARQL_1_1 ... <br>
@@ -263,7 +263,7 @@
             </div>
             <div class="body">
                 <h3>Web-based</h3>
-                <p>TypeScript/ JavaScript <br> Runs in browsers <br> and server-side <br> (Node.js, Bun, Deno)</p>
+                <p>TypeScript / JavaScript <br> Runs in browsers <br> and server-side <br> (Node.js, Bun, Deno)</p>
                 <div class="footer">Widest developer reach</div>
             </div>
         </div>
@@ -594,11 +594,11 @@
             <div class="rulemap__right">
                 <div class="rulemap__section-title">TypeScript Example</div>
                 <div class="rulemap__code">
-                    <span class="kw">const</span> base = GeneratorBuilder<br>
+                    <span class="kw">const</span> base = <span style="color: #ffd700;">GeneratorBuilder</span><br>
                     &nbsp; .create([iriFull, prefixedIri])<br>
                     &nbsp; .addRule(iri)<br>
                     <span class="cm">&nbsp; // Base IRI generator</span><br><br>
-                    <span class="kw">const</span> custom = GeneratorBuilder<br>
+                    <span class="kw">const</span> custom = <span style="color: #ffd700;">GeneratorBuilder</span><br>
                     &nbsp; .create(base)<br>
                     <span class="hl">&nbsp; .patchRule(altPrefixedRule)</span>
                 </div>
@@ -722,7 +722,7 @@
                  alt="Mean execution time bar chart: Traqula 2.5ms vs SPARQL.js 23.9ms — approximately 10× faster"
                  style="max-height: 230px; width: 100%; object-fit: contain;">
         </div>
-        <div style="flex: 0.85; font-size: 0.9em; line-height: 1.6;">
+        <div style="flex: 0.85; font-size: 0.9em; line-height: 1.6; background: #f8faf8; border-radius: 10px; padding: 1rem; border: 1.5px solid #e0e8f0;">
             <p style="margin: 0 0 0.6rem; font-weight: bold; color: var(--color-prim);">Key findings</p>
             <ul style="margin: 0; padding-left: 1.2em; color: var(--color-prim-light);">
                 <li>50 real-world <strong>DBpedia</strong> queries</li>

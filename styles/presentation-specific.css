@@ -1087,7 +1087,9 @@
 .pipeline__box,
 .roundtrip__box,
 .numbered-card,
-.card {
+.card,
+.rulemap__dict,
+.rulemap__code {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
