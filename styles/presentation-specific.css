@@ -34,3 +34,8 @@
     left: 25px;
     bottom: 10px;
 }
+
+#sparql-dialects code {
+    margin: 0;
+    padding: 0;
+}

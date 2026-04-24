@@ -98,14 +98,29 @@
 <section id="sparql-dialects" class="slide" rel="schema:hasPart" resource="#sparql-dialects"
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">SPARQL is not one language</h2>
-    <img src="img/sparql-dialects.svg"
-         alt="SPARQL version timeline with vendor extensions (Jena, Virtuoso, Oxigraph) and restrictions"
-         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
 
-    Traqula has been used for query rewriting work, but it's flexable nature also allows users to introduce independent optimizations,
+    <div style="display: grid; grid-template-columns: 1fr 1fr; font-size: 1.1rem">
+        <div><code>SPARQL 1.0</code></div>
+        <div><code>SPARQL 1.1</code></div>
+        <div><code>SPARQL 1.2 - Basic</code></div>
+        <div><code>SPARQL 1.2 - Full</code></div>
+        <div>Apache Jena supports <code>CONSTRUCT GRAPH</code></div>
+        <div>Virtuoso supports full-text search</div>
+        <div>Oxigraph provides additional builtin <code>ADJUST</code></div>
+        <div>Operators such as <code>OPTIONAL</code> are complex</div>
+    </div>
+
+    <div class="next"
+        style="margin: 5rem 0 0 0; line-height: 1.5em; background: #fff8e1; padding: 0.7rem; border: #e26c22 3px solid; border-radius: 1em">
+        SPARQL 1.2 and the expected maintenance mode will push new feature, likely causing diversity to grow.
+    </div>
+
+    <!--
+        Traqula has been used for query rewriting work, but it's flexable nature also allows users to introduce independent optimizations,
     Comunica for example uses Traqula, and was able to add
     [Nodes](https://github.com/comunica/comunica/blob/0a98978cea136635b647d54d2a4b74a8ed791a4c/packages/utils-algebra/lib/Algebra.ts#L178-L183)
     as an operator. there is also the Distinct Term operator that functions much the same as Comunica tarqula
+    -->
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
