@@ -41,8 +41,15 @@ h1, h2, h3, h4, h5, h6, .subtitle {
 }
 
 .slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     background: var(--color-ter);
     padding: 30px 60px 0 60px;
+}
+
+.slide ul {
+    margin-bottom: 0;
 }
 
 .slide ul > li::before {
@@ -87,6 +94,7 @@ h1, h2, h3, h4, h5, h6, .subtitle {
     font-size: 0.7em;
     margin: 0;
     margin-left: 1em;
+    line-height: 1.6em;
 }
 
 .slide h2, h3, h4, h5, h6 {
