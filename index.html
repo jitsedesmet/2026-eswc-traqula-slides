@@ -352,28 +352,35 @@
     <div class="diagram-wrap" role="img" aria-label="Traqula pipeline: Query String → Parse → AST (round-trippable) → Generate → Query String', with Algebra branch for semantic transformations">
         <div class="pipeline">
             <div class="pipeline__labels">
-                <span class="pipeline__label-ast">▲ AST path — source-preserving, enables round-tripping</span>
-                &nbsp;&nbsp;
-                <span class="pipeline__label-alg">▼ Algebra path — semantic/canonical, used by query engines for dialect bridging</span>
+                <span class="pipeline__label-ast">▲ AST path — round-trippable, source-preserving</span>
+                <span class="pipeline__label-alg">▼ Algebra path — canonical, for query engines</span>
             </div>
             <div class="pipeline__main">
                 <div class="pipeline__box pipeline__box--query">
                     <div class="pipeline__title">Query String</div>
-                    <div class="pipeline__detail">SELECT * WHERE {<br>&nbsp; ?s ?p ?o }</div>
+                    <div class="pipeline__detail">
+                        <code style="font-size: 0.6rem;">SELECT * WHERE {<br>&nbsp; ?s ?p ?o }</code>
+                    </div>
                 </div>
                 <span class="pipeline__arrow">→</span>
-                <div class="pipeline__box pipeline__box--engine">Parser</div>
+                <div class="pipeline__box pipeline__box--engine">
+                    <div style="font-size: 0.85rem; font-weight: bold;">Parser</div>
+                    <div style="font-size: 0.55rem; color: #7ec8e3;">modular rules</div>
+                </div>
                 <span class="pipeline__arrow">→</span>
                 <div class="pipeline__box pipeline__box--ast" id="pipeline-ast">
                     <div class="pipeline__title">AST</div>
                     <div class="pipeline__sub">Source-preserving<br>Round-trippable ↺</div>
                 </div>
                 <div class="pipeline__arrow--dashed">
-                    <span style="font-size: 0.6rem;">transform</span>
+                    <span style="font-size: 0.55rem; font-style: italic;">transform</span>
                     <span style="font-size: 1rem;">⇢</span>
                 </div>
                 <span class="pipeline__arrow pipeline__arrow--green">→</span>
-                <div class="pipeline__box pipeline__box--engine">Generator</div>
+                <div class="pipeline__box pipeline__box--engine">
+                    <div style="font-size: 0.85rem; font-weight: bold;">Generator</div>
+                    <div style="font-size: 0.55rem; color: #7ec8e3;">modular rules</div>
+                </div>
                 <span class="pipeline__arrow">→</span>
                 <div class="pipeline__box pipeline__box--query">
                     <div class="pipeline__title">Query String'</div>
@@ -382,23 +389,23 @@
             </div>
             <div class="pipeline__algebra-branch">
                 <div style="flex: 1;"></div>
-                <div class="pipeline__algebra-arrow-down">
-                    <span>algebra<br>conversion</span>
-                    <span style="font-size: 1rem;">↓</span>
+                <div class="pipeline__vert-connector">
+                    <span class="pipeline__vert-connector__line"></span>
+                    <span class="pipeline__vert-connector__head"></span>
+                    <span style="margin-top: 0.1rem;">to algebra</span>
                 </div>
                 <div class="pipeline__box pipeline__box--algebra">
                     <div class="pipeline__title">Algebra</div>
                     <div class="pipeline__sub">Semantic / canonical<br>Source info discarded</div>
                 </div>
-                <span class="pipeline__arrow" style="color: var(--color-sec);">⇢</span>
+                <span class="pipeline__arrow" style="color: var(--color-sec);">→</span>
                 <div class="pipeline__box pipeline__box--algebra">
                     <div class="pipeline__title">Algebra'</div>
                     <div class="pipeline__sub">Used by query engines<br>Dialect bridging</div>
                 </div>
                 <div class="pipeline__ts-badge">
                     <strong>TypeScript</strong>
-                    <span>Browser · Node.js</span>
-                    <span>Bun · Deno · Electron</span>
+                    <span>Browser · Node.js · Bun · Deno</span>
                 </div>
                 <div style="flex: 0.5;"></div>
             </div>
@@ -437,19 +444,28 @@
                 <div class="representations__col representations__col--ast">
                     <div class="representations__col-header">AST</div>
                     <div class="representations__col-body">
-                        <div style="font-weight: bold; color: var(--color-prim); font-size: 0.7rem;">SelectQuery</div>
-                        <div style="display: flex; gap: 0.3rem; justify-content: center; flex-wrap: wrap;">
-                            <span class="representations__tree-node">var(?s,?p,?o)</span>
-                            <span class="representations__tree-node">Pattern</span>
+                        <div class="ast-tree">
+                            <div class="ast-tree__row">
+                                <span class="ast-tree__node" style="font-weight: bold;">SelectQuery</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector">├─</span>
+                                <span class="ast-tree__node">var(?s, ?p, ?o)</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector">└─</span>
+                                <span class="ast-tree__node">Pattern</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 1.2rem;">
+                                <span class="ast-tree__connector">└─</span>
+                                <span class="ast-tree__node">?s ?p ?o</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 2rem;">
+                                <span class="ast-tree__connector">└─</span>
+                                <span class="ast-tree__node ast-tree__node--offset">offset: [12,14]</span>
+                            </div>
                         </div>
-                        <div style="text-align: center;">
-                            <span class="representations__tree-node">?s ?p ?o</span>
-                        </div>
-                        <div style="display: flex; gap: 0.3rem; align-items: center; justify-content: flex-end;">
-                            <span style="font-size: 0.55rem; color: var(--color-sec);">← source position</span>
-                            <span class="representations__tree-node" style="background: #fff0e0; border-color: var(--color-sec); font-size: 0.6rem;">offset</span>
-                        </div>
-                        <div class="representations__source-badge">↺ Source positions stored<br>spacing, casing preserved</div>
+                        <div class="representations__source-badge">↺ Source positions stored<br>spacing · casing · comments preserved</div>
                     </div>
                     <div class="representations__col-footer">Linters · formatters · rewriters</div>
                 </div>
@@ -463,11 +479,24 @@
                 <div class="representations__col representations__col--alg">
                     <div class="representations__col-header">Algebra</div>
                     <div class="representations__col-body">
-                        <div style="font-weight: bold; color: var(--color-prim); font-size: 0.7rem;">Project</div>
-                        <span class="representations__tree-node representations__tree-node--alg">[s, p, o]</span>
-                        <span class="representations__tree-node representations__tree-node--alg">BGP</span>
-                        <span class="representations__tree-node representations__tree-node--alg">s p o</span>
-                        <div class="representations__no-source">✗ source info<br>lost on conversion<br>→ canonical form</div>
+                        <div class="ast-tree">
+                            <div class="ast-tree__row">
+                                <span class="representations__tree-node representations__tree-node--alg" style="font-weight: bold;">Project</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector" style="color: #e26c22;">├─</span>
+                                <span class="representations__tree-node representations__tree-node--alg">[s, p, o]</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector" style="color: #e26c22;">└─</span>
+                                <span class="representations__tree-node representations__tree-node--alg">BGP</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 1.2rem;">
+                                <span class="ast-tree__connector" style="color: #e26c22;">└─</span>
+                                <span class="representations__tree-node representations__tree-node--alg">s p o</span>
+                            </div>
+                        </div>
+                        <div class="representations__no-source">✗ Source info lost<br>→ canonical form only</div>
                     </div>
                     <div class="representations__col-footer">Query engines · dialect bridging</div>
                 </div>
@@ -612,7 +641,7 @@
                 <!-- Input -->
                 <div class="roundtrip__box roundtrip__box--query">
                     <div class="roundtrip__title">Query String</div>
-                    <code>SelECT * {<br>&nbsp; ?s &nbsp; ?p ?o<br>}</code>
+                    <code><span class="rt-preserved">SelECT</span> * {<br>&nbsp; <span class="rt-focus">?s</span> &nbsp; ?p ?o<br>}</code>
                 </div>
                 <span class="roundtrip__arrow">→</span>
 
@@ -627,10 +656,9 @@
                 <div class="roundtrip__box roundtrip__box--ast">
                     <div class="roundtrip__title">AST node</div>
                     <div class="roundtrip__ast-fields">
-                        type: "variable"<br>
-                        name: "s"<br>
-                        <span class="src">offset: [12, 14]</span><br>
-                        <span style="font-style: italic; color: #2a9d5c;">← source position</span>
+                        type: <span style="color: #1a4e66;">"variable"</span><br>
+                        name: <span style="color: #1a4e66;">"s"</span><br>
+                        <span class="src">offset: [12, 14]</span>
                     </div>
                     <div class="roundtrip__transform">rename ?s → ?subject</div>
                 </div>
@@ -646,22 +674,21 @@
                 <!-- Output -->
                 <div class="roundtrip__box roundtrip__box--query">
                     <div class="roundtrip__title">Query String'</div>
-                    <code>SelECT * {<br>&nbsp; <span class="roundtrip__output-hl">?subject</span> &nbsp; ?p ?o<br>}</code>
+                    <code><span class="rt-preserved">SelECT</span> * {<br>&nbsp; <span class="roundtrip__output-hl">?subject</span> &nbsp; ?p ?o<br>}</code>
                 </div>
             </div>
 
             <!-- Legend -->
             <div class="roundtrip__legend">
-                <div class="roundtrip__legend-title">What is preserved vs. what changes:</div>
                 <div class="roundtrip__legend-row">
                     <span class="roundtrip__legend-swatch roundtrip__legend-swatch--preserved"></span>
-                    <strong style="color: #2a9d5c;">Preserved (source-identical):</strong>
-                    keyword casing <code>SelECT</code>, extra spacing <code>?p &nbsp; ?o</code>, comments, punctuation
+                    <strong style="color: #2a9d5c;">Preserved:</strong>
+                    keyword casing <code class="rt-preserved">SelECT</code> · extra spacing · comments · punctuation
                 </div>
                 <div class="roundtrip__legend-row">
                     <span class="roundtrip__legend-swatch roundtrip__legend-swatch--changed"></span>
-                    <strong style="color: var(--color-sec);">Changed (intentional):</strong>
-                    variable name <code style="color: var(--color-sec); font-weight: bold;">?s → ?subject</code> — only the patched AST node is regenerated
+                    <strong style="color: var(--color-sec);">Changed:</strong>
+                    only the renamed variable <code class="rt-changed">?s → ?subject</code>
                 </div>
             </div>
         </div>

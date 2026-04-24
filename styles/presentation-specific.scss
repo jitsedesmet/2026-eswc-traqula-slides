@@ -954,3 +954,195 @@ $pill-colors: (
     &__stat--#{$name} { @include colored-card-variant($c); }
   }
 }
+
+// ═══════════════════════════════════════════════════════════════
+// Visual polish — depth, arrows, highlights
+// ═══════════════════════════════════════════════════════════════
+
+// ── Box shadows ──
+.pipeline__box,
+.roundtrip__box,
+.numbered-card,
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.representations__col {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.09), 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.adoption__hero,
+.adoption__stat {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+// Coloured emphasis shadows for key elements
+.pipeline__box--ast,
+.roundtrip__box--ast {
+  box-shadow: 0 3px 14px rgba($color-green, 0.22), 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pipeline__box--engine,
+.roundtrip__box--engine {
+  box-shadow: 0 3px 10px rgba($color-prim, 0.28);
+}
+
+.pipeline__box--algebra {
+  box-shadow: 0 2px 10px rgba($color-sec, 0.18), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+// ── CSS arrow connectors — prepend line to arrow character ──
+.pipeline__arrow:not(.pipeline__arrow--dashed) {
+  &::before {
+    content: '';
+    width: 0.8rem;
+    height: 2.5px;
+    background: currentColor;
+    flex-shrink: 0;
+    border-radius: 1px;
+  }
+}
+
+.roundtrip__arrow {
+  &::before {
+    content: '';
+    width: 0.6rem;
+    height: 2px;
+    background: currentColor;
+    flex-shrink: 0;
+    border-radius: 1px;
+  }
+}
+
+// ── Pipeline label pills ──
+.pipeline__label-ast,
+.pipeline__label-alg {
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+}
+
+.pipeline__label-ast {
+  background: rgba($color-green, 0.12);
+  border: 1px solid rgba($color-green, 0.35);
+}
+
+.pipeline__label-alg {
+  background: rgba($color-sec, 0.1);
+  border: 1px solid rgba($color-sec, 0.3);
+}
+
+// ── Pipeline vertical connector (AST → Algebra) ──
+.pipeline__vert-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $color-sec;
+  font-size: 0.6rem;
+  gap: 0.1rem;
+
+  &__line {
+    width: 2px;
+    height: 0.8rem;
+    background: $color-sec;
+    border-radius: 1px;
+  }
+
+  &__head {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid $color-sec;
+  }
+}
+
+// ── AST tree (representations slide) ──
+.ast-tree {
+  font-family: 'Droid Sans Mono', 'Fira Mono', monospace;
+  font-size: 0.63rem;
+  color: $color-prim;
+  line-height: 1.7;
+  padding: 0.1rem 0;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    white-space: nowrap;
+  }
+
+  &__connector {
+    color: $color-green;
+    font-size: 0.6rem;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  &__node {
+    background: $bg-green;
+    border: 1px solid $color-green;
+    border-radius: 3px;
+    padding: 0.05rem 0.35rem;
+    font-size: 0.63rem;
+    display: inline-block;
+  }
+
+  &__node--offset {
+    background: $bg-orange;
+    border-color: $color-sec;
+    font-size: 0.58rem;
+  }
+}
+
+// ── Round-trip code highlighting ──
+.rt-preserved {
+  color: $color-green;
+}
+
+.rt-changed {
+  background: rgba($color-sec, 0.12);
+  border-radius: 2px;
+  padding: 0 0.1rem;
+  color: $color-sec;
+  font-weight: bold;
+}
+
+.rt-focus {
+  background: rgba($color-sec, 0.15);
+  border-bottom: 2px solid $color-sec;
+  border-radius: 2px 2px 0 0;
+  padding: 0 0.1rem;
+}
+
+// ── Representations arrow badges — more prominent ──
+.representations__col-arrow {
+  padding: 0 0.5rem;
+  gap: 0.6rem;
+}
+
+.representations__arrow-fwd,
+.representations__arrow-back,
+.representations__arrow-alg {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+// ── Comparison table — row hover ──
+.comparison-table tbody tr:hover td {
+  filter: brightness(0.97);
+  transition: filter 0.15s;
+}
+
+// ── Conclusion cards — subtle hover lift ──
+#conclusion > div > div {
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+#conclusion > div > div:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
