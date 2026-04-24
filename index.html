@@ -67,13 +67,10 @@
         </div>
     </div>
     <div style="font-size: 0.7rem; line-height: 0.7rem; margin: 1rem 0 2rem 0;">
-        MIT licenced, available on npm, TypeScript and JavaScript, ESM and CJS<br>
+        MIT licensed, available on npm, TypeScript and JavaScript, ESM and CJS<br>
         Managed by the Comunica Association, already used within Comunica
     </div>
 
-    <img src="img/traqula-logo.svg"
-         class="img-center"
-         style="right: 25%; bottom: 35%; height: 70%">
     <img src="img/traqula-logo.svg"
          class="img-center"
          style="right: 25%; bottom: 35%; height: 70%">
@@ -86,6 +83,7 @@
         <li><h3>Problem</h3></li>
         <li><h3 style="opacity: 0.8">Traqula</h3></li>
         <li><h3 style="opacity: 0.8">Performance</h3></li>
+        <li><h3 style="opacity: 0.8">Conclusion</h3></li>
     </ul>
 
     <span class="traqula-brand"></span>
@@ -98,15 +96,28 @@
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">SPARQL is not one language</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; font-size: 1.1rem">
-        <div><code>SPARQL 1.0</code></div>
-        <div><code>SPARQL 1.1</code></div>
-        <div><code>SPARQL 1.2 - Basic</code></div>
-        <div><code>SPARQL 1.2 - Full</code></div>
-        <div>Apache Jena supports <code>CONSTRUCT GRAPH</code></div>
-        <div>Virtuoso supports full-text search</div>
-        <div>Oxigraph provides additional builtin <code>ADJUST</code></div>
-        <div>Operators such as <code>OPTIONAL</code> are complex</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; font-size: 0.95rem;">
+        <div style="grid-column: 1 / -1; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.0</span>
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.1</span>
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.2 Basic</span>
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.2 Full</span>
+        </div>
+        <div style="background: #e8f7ee; border: 1.5px solid #2a9d5c; border-radius: 8px; padding: 0.5rem 0.7rem;">
+            <strong style="color: #2a9d5c; font-size: 0.8rem;">Vendor extensions</strong>
+            <ul style="margin: 0.2rem 0 0; padding-left: 1.2em; font-size: 0.85rem; color: #267499;">
+                <li>Jena: <code>CONSTRUCT GRAPH</code></li>
+                <li>Virtuoso: full-text search</li>
+                <li>Oxigraph: <code>ADJUST</code> builtin</li>
+            </ul>
+        </div>
+        <div style="background: #fff0e0; border: 1.5px solid #e26c22; border-radius: 8px; padding: 0.5rem 0.7rem;">
+            <strong style="color: #e26c22; font-size: 0.8rem;">Feature restrictions</strong>
+            <ul style="margin: 0.2rem 0 0; padding-left: 1.2em; font-size: 0.85rem; color: #267499;">
+                <li>Expensive operators removed (e.g. <code>OPTIONAL</code>)</li>
+                <li>Subset implementations of the spec</li>
+            </ul>
+        </div>
     </div>
 
     <div class="next"
@@ -115,10 +126,10 @@
     </div>
 
     <!--
-        Traqula has been used for query rewriting work, but it's flexable nature also allows users to introduce independent optimizations,
+        Traqula has been used for query rewriting work, but its flexible nature also allows users to introduce independent optimizations,
     Comunica for example uses Traqula, and was able to add
     [Nodes](https://github.com/comunica/comunica/blob/0a98978cea136635b647d54d2a4b74a8ed791a4c/packages/utils-algebra/lib/Algebra.ts#L178-L183)
-    as an operator. there is also the Distinct Term operator that functions much the same as Comunica tarqula
+    as an operator. There is also the Distinct Term operator that functions much the same as Comunica Traqula
     -->
 
     <span class="traqula-brand"></span>
@@ -194,6 +205,7 @@
         <li><h3 style="opacity: 0.5">Problem</h3></li>
         <li><h3>Traqula</h3></li>
         <li><h3 style="opacity: 0.8">Performance</h3></li>
+        <li><h3 style="opacity: 0.8">Conclusion</h3></li>
     </ul>
 
     <span class="traqula-brand"></span>
@@ -270,7 +282,7 @@
             </div>
             <div class="body">
                 <h3>Language-agnostic</h3>
-                <p>Generic core <br> can support  many languages <br> SPARQL, SHACL-Compact, GQL and other languages</p>
+                <p>Generic core <br> reusable beyond SPARQL: <br> SHACL-Compact, GQL, <br> RML, and more</p>
                 <div class="footer">Reusable framework</div>
             </div>
         </div>
@@ -689,6 +701,7 @@
                 <li>50 real-world <strong>DBpedia</strong> queries</li>
                 <li>Traqula AST: <strong style="color: var(--color-sec);">2.5 ms</strong></li>
                 <li>SPARQL.js: <strong>23.9 ms</strong></li>
+                <li>Algebra: <strong style="color: var(--color-sec);">3.6 ms</strong> vs 24.0 ms</li>
                 <li>Flexibility does <em>not</em> cost performance</li>
                 <li>SPARQL 1.2 only <strong>10.8% slower</strong> than 1.1</li>
                 <li>Round-trip adds <strong>18.8%</strong> overhead</li>
@@ -733,7 +746,7 @@
                     <div class="hero-label">Production Integration</div>
                     <hr style="width: 80%; border: none; border-top: 1.5px solid #e0e8f0; margin: 0.2rem 0;">
                     <div class="hero-detail">
-                        Traqula replaces<br>
+                        Traqula replaces the now-deprecated<br>
                         SPARQL.js + SPARQLAlgebra.js<br>
                         in the widely-used<br>
                         Comunica query engine
@@ -804,7 +817,7 @@
         </div>
         <div style="flex: 1; background: #e8f7ee; border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid #2a9d5c;">
             <p style="font-size: 1em; font-weight: bold; color: #1a4e66; margin: 0 0 0.5rem;">The Solution</p>
-            <p style="margin: 0; font-size: 0.9em; color: #267499;">Traqula: <strong>modular</strong> · round-trippable · web-native · <strong>10× faster</strong> than alternatives</p>
+            <p style="margin: 0; font-size: 0.9em; color: #267499;">Traqula: <strong>flexible</strong> · round-trippable · web-native · language-agnostic · <strong>10× faster</strong></p>
         </div>
         <div style="flex: 1; background: #fff0e0; border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid var(--color-sec);">
             <p style="font-size: 1em; font-weight: bold; color: #1a4e66; margin: 0 0 0.5rem;">The Impact</p>
@@ -815,6 +828,9 @@
         <a href="https://github.com/comunica/traqula">github.com/comunica/traqula</a>
         &nbsp;·&nbsp;
         <a href="https://traqula-resource.jitsedesmet.be/">traqula-resource.jitsedesmet.be</a>
+    </p>
+    <p style="margin: 0.4rem 0 0; text-align: center; font-size: 0.75em; color: var(--color-prim-light); font-style: italic;">
+        Future: SHACL Compact Syntax · GQL · additional query languages
     </p>
 
     <span class="traqula-brand"></span>
