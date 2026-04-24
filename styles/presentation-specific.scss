@@ -1150,131 +1150,100 @@ $pill-colors: (
 }
 
 // ═══════════════════════════════════════════════════════════════
-// Pipeline enhancements — AST hub & lossy badge
+// Pipeline connector — transform label on the AST → Generator arrow
 // ═══════════════════════════════════════════════════════════════
-.pipeline__box--ast-hub {
-  min-width: 10rem;
-  padding: 0.5rem 0.8rem;
-  border-width: 3px;
-  box-shadow: 0 0 0 4px rgba($color-green, 0.12),
-              0 4px 16px rgba($color-green, 0.25);
-}
-
-.pipeline__transform-badge {
-  margin-top: 0.3rem;
-  background: rgba($color-green, 0.12);
-  border: 1.5px solid $color-green;
-  border-radius: 6px;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.65rem;
-  color: $color-green;
-  font-weight: bold;
-  text-align: center;
-}
-
-.pipeline__lossy-badge {
-  margin-top: 0.2rem;
-  background: $bg-red;
-  border: 1px solid $color-red;
-  border-radius: 4px;
-  padding: 0.1rem 0.3rem;
-  font-size: 0.55rem;
-  color: $color-red;
-  text-align: center;
-  font-weight: bold;
+.pipeline__arrow-label {
+  font-size: 0.6rem;
+  background: rgba($color-green, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  margin-right: 0.15rem;
 }
 
 // ═══════════════════════════════════════════════════════════════
-// 5b. Round-Trip Redesign (side-by-side before/after)
+// 5b. Round-Trip (side-by-side input/output with process arrow)
 // ═══════════════════════════════════════════════════════════════
 .rt {
   @include diagram-root;
 
-  &__columns {
+  &__flow {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    gap: 1rem;
+    gap: 1.2rem;
     align-items: stretch;
     flex: 1;
   }
 
-  &__panel {
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  &__card {
+    @include colored-card(10px);
 
-    &--before { border-color: $color-prim; }
-    &--after  { border-color: $color-green; }
+    &--input  { @include colored-card-variant($color-prim); }
+    &--output { @include colored-card-variant($color-green); }
   }
 
-  &__panel-header {
+  &__card-header {
     padding: 0.4rem 0.6rem;
-    font-weight: bold;
-    font-size: 0.8rem;
     text-align: center;
     color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
   }
-
-  &__panel--before &__panel-header { background: $color-prim; }
-  &__panel--after  &__panel-header { background: $color-green; }
 
   &__code {
     flex: 1;
-    padding: 0.6rem 0.8rem;
+    padding: 0.8rem 1rem;
     font-family: 'Droid Sans Mono', 'Fira Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     line-height: 1.8;
     color: $color-prim;
     background: white;
     margin: 0;
     white-space: pre;
+    min-height: 0;
   }
 
-  &__kept {
+  &__preserved {
     color: $color-green;
     font-weight: bold;
-    border-bottom: 2px solid $color-green;
+    border-bottom: 2.5px solid $color-green;
     padding-bottom: 1px;
   }
 
-  &__target {
-    background: rgba($color-sec, 0.15);
-    border-bottom: 2px solid $color-sec;
-    border-radius: 2px 2px 0 0;
+  &__will-change {
+    background: rgba($color-sec, 0.12);
+    border-bottom: 2.5px solid $color-sec;
     padding: 0 0.15rem;
-    font-weight: bold;
+    border-radius: 2px 2px 0 0;
   }
 
   &__changed {
-    background: rgba($color-sec, 0.15);
     color: $color-sec;
     font-weight: bold;
-    border-bottom: 2px solid $color-sec;
-    border-radius: 2px 2px 0 0;
+    background: rgba($color-sec, 0.12);
+    border-bottom: 2.5px solid $color-sec;
     padding: 0 0.15rem;
+    border-radius: 2px 2px 0 0;
   }
 
-  &__annotations {
-    padding: 0.3rem 0.5rem;
-    text-align: center;
-    background: white;
-    border-top: 1px solid #e0e8f0;
+  &__arrow-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0 0.3rem;
   }
 
-  &__anno {
-    font-size: 0.65rem;
+  &__step-text {
+    font-size: 0.7rem;
     font-weight: bold;
-    padding: 0.15rem 0.5rem;
+    padding: 0.15rem 0.45rem;
     border-radius: 4px;
-    display: inline-block;
+    white-space: nowrap;
 
-    &--green {
-      color: $color-green;
-      background: $bg-green;
-      border: 1px solid rgba($color-green, 0.3);
+    &--blue {
+      color: $color-prim;
+      background: $bg-blue;
     }
 
     &--orange {
@@ -1284,83 +1253,36 @@ $pill-colors: (
     }
   }
 
-  &__process {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
-    min-width: 8rem;
-  }
-
-  &__step {
-    border-radius: 8px;
-    padding: 0.4rem 0.6rem;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-
-    &--parse, &--generate {
-      background: $color-prim;
-      color: white;
-    }
-
-    &--transform {
-      background: $bg-orange;
-      border: 2px solid $color-sec;
-      color: $color-sec;
-    }
-  }
-
-  &__step-label {
-    font-weight: bold;
-    font-size: 0.75rem;
-  }
-
-  &__step-detail {
-    font-size: 0.6rem;
-    opacity: 0.85;
-    line-height: 1.3;
-    margin-top: 0.15rem;
-  }
-
-  &__step--transform &__step-detail {
-    color: $color-sec;
-    opacity: 1;
-    font-weight: bold;
-  }
-
-  &__process-arrow {
-    color: $color-prim;
+  &__flow-arrow {
+    color: $color-prim-light;
     font-size: 0.9rem;
     line-height: 1;
   }
 
-  &__legend {
+  &__summary {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     justify-content: center;
-    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.8rem;
+    background: white;
     border: 1.5px solid $color-green;
     border-radius: 8px;
-    background: white;
   }
 
-  &__legend-item {
+  &__summary-item {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.7rem;
-  }
+    gap: 0.3rem;
 
-  &__legend-swatch {
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-    flex-shrink: 0;
+    &--preserved {
+      color: $color-green;
+      font-weight: bold;
+    }
 
-    &--green  { background: $color-green; }
-    &--orange { background: $color-sec; }
+    &--changed {
+      color: $color-sec;
+      font-weight: bold;
+    }
   }
 }
