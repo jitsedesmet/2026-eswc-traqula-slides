@@ -9,7 +9,6 @@
   ],
   forwardPorts: [8080],
   "remoteUser": "node",
-  "postCreateCommand": "curl -fsSL https://gh.io/copilot-install | bash",
   "customizations" : {
     "jetbrains" : {
       "backend" : "WebStorm"
