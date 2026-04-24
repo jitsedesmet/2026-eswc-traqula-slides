@@ -86,7 +86,6 @@
         <li><h3>Problem</h3></li>
         <li><h3 style="opacity: 0.8">Traqula</h3></li>
         <li><h3 style="opacity: 0.8">Performance</h3></li>
-        <li><h3 style="opacity: 0.8">Conclusion</h3></li>
     </ul>
 
     <span class="traqula-brand"></span>
@@ -112,7 +111,7 @@
 
     <div class="next"
         style="margin: 5rem 0 0 0; line-height: 1.5em; background: #fff8e1; padding: 0.7rem; border: #e26c22 3px solid; border-radius: 1em">
-        SPARQL 1.2 and the expected maintenance mode will push new feature, likely causing diversity to grow.
+        SPARQL 1.2 and the expected maintenance mode will push new features, likely causing diversity to grow.
     </div>
 
     <!--
@@ -128,12 +127,13 @@
 
 <section id="federation-challenge" class="slide" rel="schema:hasPart" resource="#federation-challenge"
          style="display: flex; flex-direction: column;">
-    <h2 property="schema:name">One query — four incompatible endpoints</h2>
+    <h2 property="schema:name">Beyond inconvenience:<br>
+        1 query — 4 incompatible endpoints</h2>
     <img src="img/traqula-federation.svg"
          alt="A SPARQL 1.2 federated query targeting four endpoints with different SPARQL versions and extensions"
          style="flex: 1; max-height: 65%; align-self: center; object-fit: contain; margin: auto 0;">
-    <p style="text-align: center; margin: 0.4rem 0 0; font-size: 0.95em; color: var(--color-prim-light);">
-        One query · four endpoints · four dialect profiles → <strong>bridging is essential</strong>
+    <p class="next" style="text-align: center; margin: 0.4rem 0 0; font-size: 0.95em; color: var(--color-prim-light);">
+        <strong>Bridging is essential</strong>
     </p>
 
     <span class="traqula-brand"></span>
@@ -143,9 +143,47 @@
 <section id="challenges" class="slide" rel="schema:hasPart" resource="#challenges"
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Three key challenges</h2>
-    <img src="img/challenges.svg"
-         alt="Three challenge cards: query evaluation, tooling, and maintainability"
-         style="flex: 1; max-height: 78%; align-self: center; object-fit: contain; margin: auto 0; width: 100%;">
+
+    <div class="card" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+        <div class="numbered-card">
+            <div class="numbered-card__number">1</div>
+            <h3 class="numbered-card__title">Query Evaluation</h3>
+            <p class="numbered-card__body">
+                A SPARQL 1.2 query may fail on an older SPARQL endpoint
+            </p>
+            <div class="numbered-card__highlight">
+                SPARQL 1.2 query<br>
+                → sent to SPARQL 1.0 endpoint<br>
+                → <strong>Error</strong>
+            </div>
+        </div>
+        <div class="numbered-card">
+            <div class="numbered-card__number">2</div>
+            <h3 class="numbered-card__title">Tooling</h3>
+            <p class="numbered-card__body">
+                Linters, Editors, and formatters assume a single SPARQL version
+            </p>
+            <div class="numbered-card__highlight">
+                IDE, linter, language server<br>
+                → built for SPARQL 1.1<br>
+                → <strong>breaks on SPARQL 1.2 syntax</strong>
+            </div>
+        </div>
+        <div class="numbered-card">
+            <div class="numbered-card__number">3</div>
+            <h3 class="numbered-card__title">Maintainability</h3>
+            <p class="numbered-card__body">
+                Multi-version support <br>
+                → messy hard to maintain code
+            </p>
+            <div class="numbered-card__highlight">
+                <code>if SPARQL_1_1 ... <br>
+                    else if SPARQL 1.2</code><br>
+                → duplicate code<br>
+                → <strong>Fragile codebase</strong>
+            </div>
+        </div>
+    </div>
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
@@ -159,7 +197,6 @@
         <li><h3 style="opacity: 0.5">Problem</h3></li>
         <li><h3>Traqula</h3></li>
         <li><h3 style="opacity: 0.8">Performance</h3></li>
-        <li><h3 style="opacity: 0.8">Conclusion</h3></li>
     </ul>
 
     <span class="traqula-brand"></span>

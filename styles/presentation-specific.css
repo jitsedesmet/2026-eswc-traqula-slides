@@ -1,5 +1,15 @@
 * {
     --rq-color: #d9d2e9;
+    --card-bg: #ffffff;
+    --card-border: #1f3a5f;
+    --card-accent: #1f6b7a;
+    --card-number-bg: #1f3a5f;
+    --card-title: #1f3a5f;
+    --card-text: #3a7a8a;
+    --card-highlight-bg: #fdece0;
+    --card-highlight-border: #e89060;
+    --card-highlight-text: #c45a1a;
+    --page-bg: #eef7ee;
 }
 
 .title {
@@ -38,4 +48,53 @@
 #sparql-dialects code {
     margin: 0;
     padding: 0;
+}
+
+
+.numbered-card {
+    position: relative;
+    padding: 1rem 1.75rem 1rem;
+    font-size: 0.8rem;
+    background: var(--card-bg);
+    border: 0.125rem solid var(--card-border);
+    border-radius: 0.875rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.numbered-card__number {
+    position: absolute;
+    --width: 2rem;
+    --height: 2rem;
+    width: var(--width);
+    height: var(--height);
+    top: calc(var(--height) / -2);
+    left: calc(var(--width) / -2);
+    border-radius: 50%;
+    background: var(--card-number-bg);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numbered-card__title {
+    color: var(--card-title);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.0625rem solid #c9d8dc;
+}
+
+.numbered-card__highlight {
+    border: 0.0938rem solid var(--card-highlight-border);
+    background: var(--card-highlight-bg);
+    color: var(--card-highlight-text);
+    border-radius: 0.625rem;
+    padding: 0.9rem 0.75rem;
+    font-style: italic;
+    line-height: 1.5;
 }
