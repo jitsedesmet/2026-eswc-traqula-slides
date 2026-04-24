@@ -368,13 +368,10 @@
                     <div style="font-size: 0.55rem; color: #7ec8e3;">modular rules</div>
                 </div>
                 <span class="pipeline__arrow">→</span>
-                <div class="pipeline__box pipeline__box--ast" id="pipeline-ast">
-                    <div class="pipeline__title">AST</div>
-                    <div class="pipeline__sub">Source-preserving<br>Round-trippable ↺</div>
-                </div>
-                <div class="pipeline__arrow--dashed">
-                    <span style="font-size: 0.55rem; font-style: italic;">transform</span>
-                    <span style="font-size: 1rem;">⇢</span>
+                <div class="pipeline__box pipeline__box--ast pipeline__box--ast-hub" id="pipeline-ast">
+                    <div class="pipeline__title" style="font-size: 1.1rem;">AST</div>
+                    <div class="pipeline__sub">Source-preserving · Round-trippable</div>
+                    <div class="pipeline__transform-badge">↺ transform in place</div>
                 </div>
                 <span class="pipeline__arrow pipeline__arrow--green">→</span>
                 <div class="pipeline__box pipeline__box--engine">
@@ -396,7 +393,8 @@
                 </div>
                 <div class="pipeline__box pipeline__box--algebra">
                     <div class="pipeline__title">Algebra</div>
-                    <div class="pipeline__sub">Semantic / canonical<br>Source info discarded</div>
+                    <div class="pipeline__sub">Semantic / canonical</div>
+                    <div class="pipeline__lossy-badge">✗ source info lost</div>
                 </div>
                 <span class="pipeline__arrow" style="color: var(--color-sec);">→</span>
                 <div class="pipeline__box pipeline__box--algebra">
@@ -628,67 +626,55 @@
 <section id="round-tripping" class="slide" rel="schema:hasPart" resource="#round-tripping"
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Round-tripping: only intentional changes</h2>
-    <div class="diagram-wrap" role="img" aria-label="Round-trip flow: parse with source positions → rename AST node → generate → only ?s changed to ?subject; spacing and casing preserved">
-        <div class="roundtrip">
-            <div class="roundtrip__stages">
-                <span>① Input</span>
-                <span>② Parse</span>
-                <span>③ Transform AST</span>
-                <span>④ Generate</span>
-                <span>⑤ Output</span>
-            </div>
-            <div class="roundtrip__flow">
-                <!-- Input -->
-                <div class="roundtrip__box roundtrip__box--query">
-                    <div class="roundtrip__title">Query String</div>
-                    <code><span class="rt-preserved">SelECT</span> * {<br>&nbsp; <span class="rt-focus">?s</span> &nbsp; ?p ?o<br>}</code>
-                </div>
-                <span class="roundtrip__arrow">→</span>
-
-                <!-- Parse -->
-                <div class="roundtrip__box roundtrip__box--engine">
-                    <div class="roundtrip__title">Parse</div>
-                    <div class="roundtrip__sub">records source positions</div>
-                </div>
-                <span class="roundtrip__arrow">→</span>
-
-                <!-- AST + Transform -->
-                <div class="roundtrip__box roundtrip__box--ast">
-                    <div class="roundtrip__title">AST node</div>
-                    <div class="roundtrip__ast-fields">
-                        type: <span style="color: #1a4e66;">"variable"</span><br>
-                        name: <span style="color: #1a4e66;">"s"</span><br>
-                        <span class="src">offset: [12, 14]</span>
+    <div class="diagram-wrap" role="img" aria-label="Round-trip: parse preserving source positions, rename ?s to ?subject in AST, generate output where only ?s changed while casing and spacing are preserved">
+        <div class="rt">
+            <div class="rt__columns">
+                <div class="rt__panel rt__panel--before">
+                    <div class="rt__panel-header">① Input</div>
+                    <pre class="rt__code"><span class="rt__kept">SelECT</span> * {
+  <span class="rt__target">?s</span>   ?p ?o
+}</pre>
+                    <div class="rt__annotations">
+                        <span class="rt__anno rt__anno--green">↺ source positions recorded during parse</span>
                     </div>
-                    <div class="roundtrip__transform">rename ?s → ?subject</div>
                 </div>
-                <span class="roundtrip__arrow">→</span>
 
-                <!-- Generate -->
-                <div class="roundtrip__box roundtrip__box--engine">
-                    <div class="roundtrip__title">Generate</div>
-                    <div class="roundtrip__sub">replaces only changed node</div>
+                <div class="rt__process">
+                    <div class="rt__step rt__step--parse">
+                        <div class="rt__step-label">② Parse</div>
+                        <div class="rt__step-detail">records offsets,<br>casing, spacing</div>
+                    </div>
+                    <div class="rt__process-arrow">⬇</div>
+                    <div class="rt__step rt__step--transform">
+                        <div class="rt__step-label">③ Transform</div>
+                        <div class="rt__step-detail">rename<br><code>?s → ?subject</code></div>
+                    </div>
+                    <div class="rt__process-arrow">⬇</div>
+                    <div class="rt__step rt__step--generate">
+                        <div class="rt__step-label">④ Generate</div>
+                        <div class="rt__step-detail">surgical replace<br>at recorded offset</div>
+                    </div>
                 </div>
-                <span class="roundtrip__arrow">→</span>
 
-                <!-- Output -->
-                <div class="roundtrip__box roundtrip__box--query">
-                    <div class="roundtrip__title">Query String'</div>
-                    <code><span class="rt-preserved">SelECT</span> * {<br>&nbsp; <span class="roundtrip__output-hl">?subject</span> &nbsp; ?p ?o<br>}</code>
+                <div class="rt__panel rt__panel--after">
+                    <div class="rt__panel-header">⑤ Output</div>
+                    <pre class="rt__code"><span class="rt__kept">SelECT</span> * {
+  <span class="rt__changed">?subject</span>   ?p ?o
+}</pre>
+                    <div class="rt__annotations">
+                        <span class="rt__anno rt__anno--orange">only <code>?s → ?subject</code> changed</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Legend -->
-            <div class="roundtrip__legend">
-                <div class="roundtrip__legend-row">
-                    <span class="roundtrip__legend-swatch roundtrip__legend-swatch--preserved"></span>
-                    <strong style="color: #2a9d5c;">Preserved:</strong>
-                    keyword casing <code class="rt-preserved">SelECT</code> · extra spacing · comments · punctuation
+            <div class="rt__legend">
+                <div class="rt__legend-item">
+                    <span class="rt__legend-swatch rt__legend-swatch--green"></span>
+                    <span><strong>Preserved</strong> — keyword casing (<code class="rt-preserved">SelECT</code>), extra spacing, comments</span>
                 </div>
-                <div class="roundtrip__legend-row">
-                    <span class="roundtrip__legend-swatch roundtrip__legend-swatch--changed"></span>
-                    <strong style="color: var(--color-sec);">Changed:</strong>
-                    only the renamed variable <code class="rt-changed">?s → ?subject</code>
+                <div class="rt__legend-item">
+                    <span class="rt__legend-swatch rt__legend-swatch--orange"></span>
+                    <span><strong>Changed</strong> — only the renamed variable (<code class="rt-changed">?s → ?subject</code>)</span>
                 </div>
             </div>
         </div>
