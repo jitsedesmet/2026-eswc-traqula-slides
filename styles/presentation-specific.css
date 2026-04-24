@@ -425,11 +425,10 @@
     flex-direction: column;
     border-width: 2px;
     border-style: solid;
-    background: white;
 }
-.representations__col--string { border-color: var(--color-prim); }
-.representations__col--ast    { border-color: #2a9d5c; }
-.representations__col--alg    { border-color: var(--color-sec); }
+.representations__col--string { border-color: var(--color-prim); background: var(--color-prim); }
+.representations__col--ast    { border-color: #2a9d5c; background: #2a9d5c; }
+.representations__col--alg    { border-color: var(--color-sec); background: var(--color-sec); }
 .representations__col-header {
     padding: 0.5rem;
     text-align: center;
@@ -446,6 +445,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+    background: white;
 }
 .representations__code-block {
     background: #dce8f0;
@@ -494,6 +494,7 @@
     font-style: italic;
     color: var(--color-prim);
     padding: 0.3rem;
+    background: white;
 }
 .representations__col-arrow {
     display: flex;
@@ -850,7 +851,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: white;
+    background: var(--color-prim);
 }
 .adoption__hero-header {
     background: var(--color-prim);
@@ -869,6 +870,7 @@
     padding: 0.5rem;
     text-align: center;
     gap: 0.3rem;
+    background: white;
 }
 .adoption__hero-body .hero-label {
     font-weight: bold;
@@ -895,7 +897,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: white;
     border-width: 2px;
     border-style: solid;
 }
@@ -917,12 +918,13 @@
     color: var(--color-prim-light);
     font-size: 0.7rem;
     line-height: 1.5;
+    background: white;
 }
-.adoption__stat--tests  { border-color: #2a9d5c; }
+.adoption__stat--tests  { border-color: #2a9d5c; background: #2a9d5c; }
 .adoption__stat--tests .adoption__stat-header { background: #2a9d5c; }
-.adoption__stat--coverage { border-color: var(--color-prim-light); }
+.adoption__stat--coverage { border-color: var(--color-prim-light); background: var(--color-prim-light); }
 .adoption__stat--coverage .adoption__stat-header { background: var(--color-prim-light); }
-.adoption__stat--license  { border-color: var(--color-sec); }
+.adoption__stat--license  { border-color: var(--color-sec); background: var(--color-sec); }
 .adoption__stat--license .adoption__stat-header { background: var(--color-sec); }
-.adoption__stat--sustain  { border-color: var(--color-prim); }
+.adoption__stat--sustain  { border-color: var(--color-prim); background: var(--color-prim); }
 .adoption__stat--sustain .adoption__stat-header { background: var(--color-prim); }
