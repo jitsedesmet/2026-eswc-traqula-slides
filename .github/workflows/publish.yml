@@ -33,11 +33,9 @@ jobs:
           node-version: 22
 
       - name: Install and Build 🔧
-        env:
-          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: |
           npm install
-          npm run pdf
+          yes | npm run pdf
           npm run build
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
