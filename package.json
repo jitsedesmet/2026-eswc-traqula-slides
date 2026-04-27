@@ -7,9 +7,9 @@
   "license": "MIT",
   "files": [
     "index.html",
-    "styles/",
-    "pictures/",
-    "img/"
+    "styles/**",
+    "pictures/**",
+    "img/**"
   ],
   "scripts": {
     "scss": "sass styles/presentation-specific.scss styles/presentation-specific.css --no-source-map",
