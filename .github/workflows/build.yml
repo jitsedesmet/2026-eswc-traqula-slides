@@ -14,8 +14,16 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Allow Chrome sandbox 🛡️
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
       - name: Install and Build 🔧
         run: |
           npm install
-          npm run pdf
+          yes| npm run pdf
           npm run build

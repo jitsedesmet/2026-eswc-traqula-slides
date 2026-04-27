@@ -30,7 +30,7 @@
         <p class="author" rel="schema:author" resource="https://www.rubensworks.net/#me"><a href="https://www.rubensworks.net/">Ruben Taelman</a></p>
         <div class="venue">
             <a href="https://2026.eswc-conferences.org/">ESWC 2026</a> <a href="https://2026.eswc-conferences.org/calls/papers-resource-track/">Resource Track</a> supporting slides for
-            <a href="https://traqula-resource.jitsedesmet.be/">Traqula Resource</a>, <span rel="schema:datePublished">11 May 2026</span></a>
+            <a href="https://traqula-resource.jitsedesmet.be/">Traqula Resource</a>, <span rel="schema:datePublished">11 May 2026</span>
         </div>
 
         <a class="pure" href="./img/slides.pdf">
@@ -67,13 +67,10 @@
         </div>
     </div>
     <div style="font-size: 0.7rem; line-height: 0.7rem; margin: 1rem 0 2rem 0;">
-        MIT licenced, available on npm, TypeScript and JavaScript, ESM and CJS<br>
+        MIT licensed, available on npm, TypeScript and JavaScript, ESM and CJS<br>
         Managed by the Comunica Association, already used within Comunica
     </div>
 
-    <img src="img/traqula-logo.svg"
-         class="img-center"
-         style="right: 25%; bottom: 35%; height: 70%">
     <img src="img/traqula-logo.svg"
          class="img-center"
          style="right: 25%; bottom: 35%; height: 70%">
@@ -86,6 +83,7 @@
         <li><h3>Problem</h3></li>
         <li><h3 style="opacity: 0.8">Traqula</h3></li>
         <li><h3 style="opacity: 0.8">Performance</h3></li>
+        <li><h3 style="opacity: 0.8">Conclusion</h3></li>
     </ul>
 
     <span class="traqula-brand"></span>
@@ -98,15 +96,28 @@
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">SPARQL is not one language</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; font-size: 1.1rem">
-        <div><code>SPARQL 1.0</code></div>
-        <div><code>SPARQL 1.1</code></div>
-        <div><code>SPARQL 1.2 - Basic</code></div>
-        <div><code>SPARQL 1.2 - Full</code></div>
-        <div>Apache Jena supports <code>CONSTRUCT GRAPH</code></div>
-        <div>Virtuoso supports full-text search</div>
-        <div>Oxigraph provides additional builtin <code>ADJUST</code></div>
-        <div>Operators such as <code>OPTIONAL</code> are complex</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; font-size: 0.95rem;">
+        <div style="grid-column: 1 / -1; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.0</span>
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.1</span>
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.2 Basic</span>
+            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.2 Full</span>
+        </div>
+        <div style="background: #e8f7ee; border: 1.5px solid #2a9d5c; border-radius: 8px; padding: 0.5rem 0.7rem;">
+            <strong style="color: #2a9d5c; font-size: 0.8rem;">Vendor extensions</strong>
+            <ul style="margin: 0.2rem 0 0; padding-left: 1.2em; font-size: 0.85rem; color: #267499;">
+                <li>Jena: <code>CONSTRUCT GRAPH</code></li>
+                <li>Virtuoso: full-text search</li>
+                <li>Oxigraph: <code>ADJUST</code> builtin</li>
+            </ul>
+        </div>
+        <div style="background: #fff0e0; border: 1.5px solid #e26c22; border-radius: 8px; padding: 0.5rem 0.7rem;">
+            <strong style="color: #e26c22; font-size: 0.8rem;">Feature restrictions</strong>
+            <ul style="margin: 0.2rem 0 0; padding-left: 1.2em; font-size: 0.85rem; color: #267499;">
+                <li>Expensive operators removed (e.g. <code>OPTIONAL</code>)</li>
+                <li>Subset implementations of the spec</li>
+            </ul>
+        </div>
     </div>
 
     <div class="next"
@@ -115,10 +126,10 @@
     </div>
 
     <!--
-        Traqula has been used for query rewriting work, but it's flexable nature also allows users to introduce independent optimizations,
+        Traqula has been used for query rewriting work, but its flexible nature also allows users to introduce independent optimizations,
     Comunica for example uses Traqula, and was able to add
     [Nodes](https://github.com/comunica/comunica/blob/0a98978cea136635b647d54d2a4b74a8ed791a4c/packages/utils-algebra/lib/Algebra.ts#L178-L183)
-    as an operator. there is also the Distinct Term operator that functions much the same as Comunica tarqula
+    as an operator. There is also the Distinct Term operator that functions much the same as Comunica Traqula
     -->
 
     <span class="traqula-brand"></span>
@@ -159,7 +170,7 @@
         <div class="numbered-card">
             <h3 class="numbered-card__title">Tooling</h3>
             <p class="numbered-card__body">
-                Linters, Editors, and formatters assume a single SPARQL version
+                Linters, editors, and formatters assume a single SPARQL version
             </p>
             <div class="numbered-card__highlight">
                 IDE, linter, language server<br>
@@ -171,7 +182,7 @@
             <h3 class="numbered-card__title">Maintainability</h3>
             <p class="numbered-card__body">
                 Multi-version support <br>
-                → messy hard to maintain code
+                → messy, hard-to-maintain code
             </p>
             <div class="numbered-card__highlight">
                 <code>if SPARQL_1_1 ... <br>
@@ -194,6 +205,7 @@
         <li><h3 style="opacity: 0.5">Problem</h3></li>
         <li><h3>Traqula</h3></li>
         <li><h3 style="opacity: 0.8">Performance</h3></li>
+        <li><h3 style="opacity: 0.8">Conclusion</h3></li>
     </ul>
 
     <span class="traqula-brand"></span>
@@ -251,7 +263,7 @@
             </div>
             <div class="body">
                 <h3>Web-based</h3>
-                <p>TypeScript/ JavaScript <br> Runs in browsers <br> and server-side <br> (Node.js, Bun, Deno)</p>
+                <p>TypeScript / JavaScript <br> Runs in browsers <br> and server-side <br> (Node.js, Bun, Deno)</p>
                 <div class="footer">Widest developer reach</div>
             </div>
         </div>
@@ -270,7 +282,7 @@
             </div>
             <div class="body">
                 <h3>Language-agnostic</h3>
-                <p>Generic core <br> can support  many languages <br> SPARQL, SHACL-Compact, GQL and other languages</p>
+                <p>Generic core <br> reusable beyond SPARQL: <br> SHACL-Compact, GQL, <br> RML, and more</p>
                 <div class="footer">Reusable framework</div>
             </div>
         </div>
@@ -340,28 +352,31 @@
     <div class="diagram-wrap" role="img" aria-label="Traqula pipeline: Query String → Parse → AST (round-trippable) → Generate → Query String', with Algebra branch for semantic transformations">
         <div class="pipeline">
             <div class="pipeline__labels">
-                <span class="pipeline__label-ast">▲ AST path — source-preserving, enables round-tripping</span>
-                &nbsp;&nbsp;
-                <span class="pipeline__label-alg">▼ Algebra path — semantic/canonical, used by query engines for dialect bridging</span>
+                <span class="pipeline__label-ast">▲ AST path — round-trippable, source-preserving</span>
+                <span class="pipeline__label-alg">▼ Algebra path — canonical, for query engines</span>
             </div>
             <div class="pipeline__main">
                 <div class="pipeline__box pipeline__box--query">
                     <div class="pipeline__title">Query String</div>
-                    <div class="pipeline__detail">SELECT * WHERE {<br>&nbsp; ?s ?p ?o }</div>
+                    <div class="pipeline__detail">
+                        <code style="font-size: 0.6rem;">SELECT * WHERE {<br>&nbsp; ?s ?p ?o }</code>
+                    </div>
                 </div>
                 <span class="pipeline__arrow">→</span>
-                <div class="pipeline__box pipeline__box--engine">Parser</div>
+                <div class="pipeline__box pipeline__box--engine">
+                    <div style="font-size: 0.85rem; font-weight: bold;">Parser</div>
+                    <div style="font-size: 0.55rem; color: #7ec8e3;">modular rules</div>
+                </div>
                 <span class="pipeline__arrow">→</span>
                 <div class="pipeline__box pipeline__box--ast" id="pipeline-ast">
                     <div class="pipeline__title">AST</div>
-                    <div class="pipeline__sub">Source-preserving<br>Round-trippable ↺</div>
+                    <div class="pipeline__sub">Source-preserving · Round-trippable</div>
                 </div>
-                <div class="pipeline__arrow--dashed">
-                    <span style="font-size: 0.6rem;">transform</span>
-                    <span style="font-size: 1rem;">⇢</span>
+                <span class="pipeline__arrow pipeline__arrow--green"><span class="pipeline__arrow-label">↺ transform</span> →</span>
+                <div class="pipeline__box pipeline__box--engine">
+                    <div style="font-size: 0.85rem; font-weight: bold;">Generator</div>
+                    <div style="font-size: 0.55rem; color: #7ec8e3;">modular rules</div>
                 </div>
-                <span class="pipeline__arrow pipeline__arrow--green">→</span>
-                <div class="pipeline__box pipeline__box--engine">Generator</div>
                 <span class="pipeline__arrow">→</span>
                 <div class="pipeline__box pipeline__box--query">
                     <div class="pipeline__title">Query String'</div>
@@ -370,23 +385,23 @@
             </div>
             <div class="pipeline__algebra-branch">
                 <div style="flex: 1;"></div>
-                <div class="pipeline__algebra-arrow-down">
-                    <span>algebra<br>conversion</span>
-                    <span style="font-size: 1rem;">↓</span>
+                <div class="pipeline__vert-connector">
+                    <span class="pipeline__vert-connector__line"></span>
+                    <span class="pipeline__vert-connector__head"></span>
+                    <span style="margin-top: 0.1rem;">to algebra</span>
                 </div>
                 <div class="pipeline__box pipeline__box--algebra">
                     <div class="pipeline__title">Algebra</div>
                     <div class="pipeline__sub">Semantic / canonical<br>Source info discarded</div>
                 </div>
-                <span class="pipeline__arrow" style="color: var(--color-sec);">⇢</span>
+                <span class="pipeline__arrow" style="color: var(--color-sec);">→</span>
                 <div class="pipeline__box pipeline__box--algebra">
                     <div class="pipeline__title">Algebra'</div>
                     <div class="pipeline__sub">Used by query engines<br>Dialect bridging</div>
                 </div>
                 <div class="pipeline__ts-badge">
                     <strong>TypeScript</strong>
-                    <span>Browser · Node.js</span>
-                    <span>Bun · Deno · Electron</span>
+                    <span>Browser · Node.js · Bun · Deno</span>
                 </div>
                 <div style="flex: 0.5;"></div>
             </div>
@@ -425,19 +440,28 @@
                 <div class="representations__col representations__col--ast">
                     <div class="representations__col-header">AST</div>
                     <div class="representations__col-body">
-                        <div style="font-weight: bold; color: var(--color-prim); font-size: 0.7rem;">SelectQuery</div>
-                        <div style="display: flex; gap: 0.3rem; justify-content: center; flex-wrap: wrap;">
-                            <span class="representations__tree-node">var(?s,?p,?o)</span>
-                            <span class="representations__tree-node">Pattern</span>
+                        <div class="ast-tree">
+                            <div class="ast-tree__row">
+                                <span class="ast-tree__node" style="font-weight: bold;">SelectQuery</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector">├─</span>
+                                <span class="ast-tree__node">var(?s, ?p, ?o)</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector">└─</span>
+                                <span class="ast-tree__node">Pattern</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 1.2rem;">
+                                <span class="ast-tree__connector">└─</span>
+                                <span class="ast-tree__node">?s ?p ?o</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 2rem;">
+                                <span class="ast-tree__connector">└─</span>
+                                <span class="ast-tree__node ast-tree__node--offset">offset: [12,14]</span>
+                            </div>
                         </div>
-                        <div style="text-align: center;">
-                            <span class="representations__tree-node">?s ?p ?o</span>
-                        </div>
-                        <div style="display: flex; gap: 0.3rem; align-items: center; justify-content: flex-end;">
-                            <span style="font-size: 0.55rem; color: var(--color-sec);">← source position</span>
-                            <span class="representations__tree-node" style="background: #fff0e0; border-color: var(--color-sec); font-size: 0.6rem;">offset</span>
-                        </div>
-                        <div class="representations__source-badge">↺ Source positions stored<br>spacing, casing preserved</div>
+                        <div class="representations__source-badge">↺ Source positions stored<br>spacing · casing · comments preserved</div>
                     </div>
                     <div class="representations__col-footer">Linters · formatters · rewriters</div>
                 </div>
@@ -451,11 +475,24 @@
                 <div class="representations__col representations__col--alg">
                     <div class="representations__col-header">Algebra</div>
                     <div class="representations__col-body">
-                        <div style="font-weight: bold; color: var(--color-prim); font-size: 0.7rem;">Project</div>
-                        <span class="representations__tree-node representations__tree-node--alg">[s, p, o]</span>
-                        <span class="representations__tree-node representations__tree-node--alg">BGP</span>
-                        <span class="representations__tree-node representations__tree-node--alg">s p o</span>
-                        <div class="representations__no-source">✗ source info<br>lost on conversion<br>→ canonical form</div>
+                        <div class="ast-tree">
+                            <div class="ast-tree__row">
+                                <span class="representations__tree-node representations__tree-node--alg" style="font-weight: bold;">Project</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector" style="color: #e26c22;">├─</span>
+                                <span class="representations__tree-node representations__tree-node--alg">[s, p, o]</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 0.4rem;">
+                                <span class="ast-tree__connector" style="color: #e26c22;">└─</span>
+                                <span class="representations__tree-node representations__tree-node--alg">BGP</span>
+                            </div>
+                            <div class="ast-tree__row" style="padding-left: 1.2rem;">
+                                <span class="ast-tree__connector" style="color: #e26c22;">└─</span>
+                                <span class="representations__tree-node representations__tree-node--alg">s p o</span>
+                            </div>
+                        </div>
+                        <div class="representations__no-source">✗ Source info lost<br>→ canonical form only</div>
                     </div>
                     <div class="representations__col-footer">Query engines · dialect bridging</div>
                 </div>
@@ -553,11 +590,11 @@
             <div class="rulemap__right">
                 <div class="rulemap__section-title">TypeScript Example</div>
                 <div class="rulemap__code">
-                    <span class="kw">const</span> base = GeneratorBuilder<br>
+                    <span class="kw">const</span> base = <span style="color: #ffd700;">GeneratorBuilder</span><br>
                     &nbsp; .create([iriFull, prefixedIri])<br>
                     &nbsp; .addRule(iri)<br>
                     <span class="cm">&nbsp; // Base IRI generator</span><br><br>
-                    <span class="kw">const</span> custom = GeneratorBuilder<br>
+                    <span class="kw">const</span> custom = <span style="color: #ffd700;">GeneratorBuilder</span><br>
                     &nbsp; .create(base)<br>
                     <span class="hl">&nbsp; .patchRule(altPrefixedRule)</span>
                 </div>
@@ -587,70 +624,35 @@
 <section id="round-tripping" class="slide" rel="schema:hasPart" resource="#round-tripping"
          style="display: flex; flex-direction: column;">
     <h2 property="schema:name">Round-tripping: only intentional changes</h2>
-    <div class="diagram-wrap" role="img" aria-label="Round-trip flow: parse with source positions → rename AST node → generate → only ?s changed to ?subject; spacing and casing preserved">
-        <div class="roundtrip">
-            <div class="roundtrip__stages">
-                <span>① Input</span>
-                <span>② Parse</span>
-                <span>③ Transform AST</span>
-                <span>④ Generate</span>
-                <span>⑤ Output</span>
-            </div>
-            <div class="roundtrip__flow">
-                <!-- Input -->
-                <div class="roundtrip__box roundtrip__box--query">
-                    <div class="roundtrip__title">Query String</div>
-                    <code>SelECT * {<br>&nbsp; ?s &nbsp; ?p ?o<br>}</code>
+    <div class="diagram-wrap" role="img" aria-label="Round-trip demonstration: parse a SPARQL query, rename ?s to ?subject in the AST, generate output — only the renamed variable changes while casing and spacing are preserved">
+        <div class="rt">
+            <div class="rt__flow">
+                <div class="rt__card rt__card--input">
+                    <div class="rt__card-header">① Input</div>
+                    <pre class="rt__code"><span class="rt__preserved">SelECT</span> * {
+  <span class="rt__will-change">?s</span>   ?p ?o
+}</pre>
                 </div>
-                <span class="roundtrip__arrow">→</span>
 
-                <!-- Parse -->
-                <div class="roundtrip__box roundtrip__box--engine">
-                    <div class="roundtrip__title">Parse</div>
-                    <div class="roundtrip__sub">records source positions</div>
+                <div class="rt__arrow-col">
+                    <span class="rt__step-text rt__step-text--blue">② parse</span>
+                    <span class="rt__flow-arrow">↓</span>
+                    <span class="rt__step-text rt__step-text--orange">③ ?s → ?subject</span>
+                    <span class="rt__flow-arrow">↓</span>
+                    <span class="rt__step-text rt__step-text--blue">④ generate</span>
                 </div>
-                <span class="roundtrip__arrow">→</span>
 
-                <!-- AST + Transform -->
-                <div class="roundtrip__box roundtrip__box--ast">
-                    <div class="roundtrip__title">AST node</div>
-                    <div class="roundtrip__ast-fields">
-                        type: "variable"<br>
-                        name: "s"<br>
-                        <span class="src">offset: [12, 14]</span><br>
-                        <span style="font-style: italic; color: #2a9d5c;">← source position</span>
-                    </div>
-                    <div class="roundtrip__transform">rename ?s → ?subject</div>
-                </div>
-                <span class="roundtrip__arrow">→</span>
-
-                <!-- Generate -->
-                <div class="roundtrip__box roundtrip__box--engine">
-                    <div class="roundtrip__title">Generate</div>
-                    <div class="roundtrip__sub">replaces only changed node</div>
-                </div>
-                <span class="roundtrip__arrow">→</span>
-
-                <!-- Output -->
-                <div class="roundtrip__box roundtrip__box--query">
-                    <div class="roundtrip__title">Query String'</div>
-                    <code>SelECT * {<br>&nbsp; <span class="roundtrip__output-hl">?subject</span> &nbsp; ?p ?o<br>}</code>
+                <div class="rt__card rt__card--output">
+                    <div class="rt__card-header">⑤ Output</div>
+                    <pre class="rt__code"><span class="rt__preserved">SelECT</span> * {
+  <span class="rt__changed">?subject</span>   ?p ?o
+}</pre>
                 </div>
             </div>
 
-            <!-- Legend -->
-            <div class="roundtrip__legend">
-                <div class="roundtrip__legend-title">What is preserved vs. what changes:</div>
-                <div class="roundtrip__legend-row">
-                    <span class="roundtrip__legend-swatch roundtrip__legend-swatch--preserved"></span>
-                    <strong style="color: #2a9d5c;">Preserved (source-identical):</strong>
-                    keyword casing <code>SelECT</code>, extra spacing <code>?p &nbsp; ?o</code>, comments, punctuation
-                </div>
-                <div class="roundtrip__legend-row">
-                    <span class="roundtrip__legend-swatch roundtrip__legend-swatch--changed"></span>
-                    <strong style="color: var(--color-sec);">Changed (intentional):</strong>
-                    variable name <code style="color: var(--color-sec); font-weight: bold;">?s → ?subject</code> — only the patched AST node is regenerated
-                </div>
+            <div class="rt__summary">
+                <span class="rt__summary-item rt__summary-item--preserved">✓ Preserved: casing (<code class="rt-preserved">SelECT</code>), spacing</span>
+                <span class="rt__summary-item rt__summary-item--changed">● Changed: only <code class="rt-changed">?s → ?subject</code></span>
             </div>
         </div>
     </div>
@@ -682,12 +684,13 @@
                  alt="Mean execution time bar chart: Traqula 2.5ms vs SPARQL.js 23.9ms — approximately 10× faster"
                  style="max-height: 230px; width: 100%; object-fit: contain;">
         </div>
-        <div style="flex: 0.85; font-size: 0.9em; line-height: 1.6;">
+        <div style="flex: 0.85; font-size: 0.9em; line-height: 1.6; background: #f8faf8; border-radius: 10px; padding: 1rem; border: 1.5px solid #e0e8f0;">
             <p style="margin: 0 0 0.6rem; font-weight: bold; color: var(--color-prim);">Key findings</p>
             <ul style="margin: 0; padding-left: 1.2em; color: var(--color-prim-light);">
                 <li>50 real-world <strong>DBpedia</strong> queries</li>
                 <li>Traqula AST: <strong style="color: var(--color-sec);">2.5 ms</strong></li>
                 <li>SPARQL.js: <strong>23.9 ms</strong></li>
+                <li>Algebra: <strong style="color: var(--color-sec);">3.6 ms</strong> vs 24.0 ms</li>
                 <li>Flexibility does <em>not</em> cost performance</li>
                 <li>SPARQL 1.2 only <strong>10.8% slower</strong> than 1.1</li>
                 <li>Round-trip adds <strong>18.8%</strong> overhead</li>
@@ -717,7 +720,7 @@
                     <div class="hero-label">Production Integration</div>
                     <hr style="width: 80%; border: none; border-top: 1.5px solid #e0e8f0; margin: 0.2rem 0;">
                     <div class="hero-detail">
-                        Traqula replaces<br>
+                        Traqula replaces the now-deprecated<br>
                         SPARQL.js + SPARQLAlgebra.js<br>
                         in the widely-used<br>
                         Comunica query engine
@@ -788,7 +791,7 @@
         </div>
         <div style="flex: 1; background: #e8f7ee; border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid #2a9d5c;">
             <p style="font-size: 1em; font-weight: bold; color: #1a4e66; margin: 0 0 0.5rem;">The Solution</p>
-            <p style="margin: 0; font-size: 0.9em; color: #267499;">Traqula: <strong>modular</strong> · round-trippable · web-native · <strong>10× faster</strong> than alternatives</p>
+            <p style="margin: 0; font-size: 0.9em; color: #267499;">Traqula: <strong>flexible</strong> · round-trippable · web-native · language-agnostic · <strong>10× faster</strong></p>
         </div>
         <div style="flex: 1; background: #fff0e0; border-radius: 10px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: center; border-left: 5px solid var(--color-sec);">
             <p style="font-size: 1em; font-weight: bold; color: #1a4e66; margin: 0 0 0.5rem;">The Impact</p>
@@ -799,6 +802,9 @@
         <a href="https://github.com/comunica/traqula">github.com/comunica/traqula</a>
         &nbsp;·&nbsp;
         <a href="https://traqula-resource.jitsedesmet.be/">traqula-resource.jitsedesmet.be</a>
+    </p>
+    <p style="margin: 0.4rem 0 0; text-align: center; font-size: 0.75em; color: var(--color-prim-light); font-style: italic;">
+        Future: SHACL Compact Syntax · GQL · additional query languages
     </p>
 
     <span class="traqula-brand"></span>
