@@ -1,0 +1,956 @@
+// ═══════════════════════════════════════════════════════════════
+// SCSS Variables — shared palette
+// ═══════════════════════════════════════════════════════════════
+@use "sass:list";
+@use "sass:map";
+
+$color-prim:       #1a4e66;
+$color-prim-light: #267499;
+$color-sec:        #e26c22;
+$color-green:      #2a9d5c;
+$color-red:        #cc3333;
+
+$bg-blue:    #dce8f0;
+$bg-green:   #e8f7ee;
+$bg-orange:  #fff0e0;
+$bg-red:     #fde8e8;
+$bg-alt:     #f0f4f8;
+$bg-alt2:    #eef4f8;
+
+// ═══════════════════════════════════════════════════════════════
+// Mixins
+// ═══════════════════════════════════════════════════════════════
+
+// Bordered card with a colored header — eliminates the sub-pixel gap
+// by setting the container background to match the header/border color.
+@mixin colored-card($radius: 12px) {
+  border-radius: $radius;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-width: 2px;
+  border-style: solid;
+}
+
+// Variant that sets border, background, and header background to the same color.
+@mixin colored-card-variant($color) {
+  border-color: $color;
+  background: $color;
+
+  > :first-child { background: $color; }
+}
+
+// Arrow connector — shared between pipeline and roundtrip diagrams
+@mixin diagram-arrow($color: $color-prim, $size: 1.2rem) {
+  display: flex;
+  align-items: center;
+  color: $color;
+  font-size: $size;
+  flex-shrink: 0;
+}
+
+// Full-width diagram root
+@mixin diagram-root($font-size: 0.75rem) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: $font-size;
+}
+
+// Rounded box used in flow diagrams
+@mixin flow-box($radius: 8px) {
+  border-radius: $radius;
+  padding: 0.4rem 0.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+// Arrow badge label (used between columns in representations)
+@mixin arrow-badge($bg, $color) {
+  background: $bg;
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  font-weight: bold;
+  white-space: nowrap;
+  color: $color;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CSS Custom Properties
+// ═══════════════════════════════════════════════════════════════
+* {
+  --rq-color: #d9d2e9;
+  --card-bg: #ffffff;
+  --card-border: #1f3a5f;
+  --card-accent: #1f6b7a;
+  --card-number-bg: #1f3a5f;
+  --card-title: #1f3a5f;
+  --card-text: #3a7a8a;
+  --card-highlight-bg: #fdece0;
+  --card-highlight-border: #e89060;
+  --card-highlight-text: #c45a1a;
+  --page-bg: #eef7ee;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// General utilities
+// ═══════════════════════════════════════════════════════════════
+.title  { line-height: 3em; }
+.mono   { font-family: monospace; }
+
+.img-center {
+  position: absolute;
+  transform: translate(50%, 50%);
+}
+
+.note {
+  font-size: 0.8em;
+  color: var(--color-prim-light);
+  line-height: 1.3;
+}
+
+.traqula-brand {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: url('../img/traqula-logo.svg') center / contain no-repeat;
+  left: 25px;
+  bottom: 10px;
+}
+
+#sparql-dialects code {
+  margin: 0;
+  padding: 0;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Numbered cards (challenges slide)
+// ═══════════════════════════════════════════════════════════════
+.numbered-card {
+  position: relative;
+  padding: 1rem 1.75rem;
+  font-size: 0.8rem;
+  background: var(--card-bg);
+  border: 0.125rem solid var(--card-border);
+  border-radius: 0.875rem;
+  text-align: center;
+  box-sizing: border-box;
+
+  &__title {
+    color: var(--card-title);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.0625rem solid #c9d8dc;
+  }
+
+  &__highlight {
+    border: 0.0938rem solid var(--card-highlight-border);
+    background: var(--card-highlight-bg);
+    color: var(--card-highlight-text);
+    border-radius: 0.625rem;
+    padding: 0.9rem 0.75rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Requirement cards (requirements slide)
+// ═══════════════════════════════════════════════════════════════
+.card {
+  border-radius: 0.875rem;
+  overflow: hidden;
+  border: 0.125rem solid;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.75rem;
+
+  .header {
+    color: #fff;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+
+    .visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.375rem;
+      min-height: 2.125rem;
+    }
+
+    .caption {
+      font-size: 0.875rem;
+      justify-self: flex-end;
+      color: white;
+    }
+  }
+
+  .body {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  h3 {
+    margin: 0 0 0.625rem;
+    font-size: 1rem;
+    color: #1d3a55;
+    border-bottom: 0.0625rem solid #e4ebe0;
+  }
+
+  p {
+    color: #3a5266;
+    line-height: 1.5;
+    margin: 0 0 1.125rem;
+    flex: 1;
+  }
+
+  .footer {
+    font-style: italic;
+    color: #3a5266;
+    font-size: 0.9375rem;
+  }
+}
+
+// Card color variants (loop)
+$card-colors: (
+  1: #1d3a55,
+  2: #2f6a93,
+  3: #e07a2b,
+  4: #1d3a55,
+);
+@each $n, $c in $card-colors {
+  .card-#{$n} {
+    border-color: $c;
+    @if $n == 4 { border-style: dashed; }
+    .header { background: $c; }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Pills
+// ═══════════════════════════════════════════════════════════════
+.pill {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+$pill-colors: (
+  "grey":   (#b9c4cc, #1d3a55),
+  "blue":   (#2f6a93, null),
+  "orange": (#e07a2b, null),
+  "navy":   (#1d3a55, null),
+  "add":    (#2e9e5b, #fff),
+  "remove": (#6b7a85, #fff),
+  "patch":  (#e0a82b, #1d3a55),
+);
+@each $name, $pair in $pill-colors {
+  .pill-#{$name} {
+    background: list.nth($pair, 1);
+    @if list.nth($pair, 2) { color: list.nth($pair, 2); }
+  }
+}
+
+.pill-tag {
+  font-size: 0.625rem;
+  font-weight: bold;
+  margin-left: 0.25rem;
+  opacity: 0.9;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Browser icon (card 3)
+// ═══════════════════════════════════════════════════════════════
+.browser {
+  width: 4.375rem;
+  height: 2.875rem;
+  border: 0.125rem solid #fff;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+  box-sizing: border-box;
+
+  .dots {
+    display: flex;
+    gap: 0.1875rem;
+    margin-bottom: 0.25rem;
+    span { width: 0.3125rem; height: 0.3125rem; background: #fff; border-radius: 50%; }
+  }
+
+  .window {
+    background: #fff;
+    height: 1.375rem;
+    border-radius: 0.1875rem;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Diagram wrapper — shared by all HTML diagrams
+// ═══════════════════════════════════════════════════════════════
+.diagram-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: auto 0;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 1. Parser Comparison Table
+// ═══════════════════════════════════════════════════════════════
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid $color-prim;
+  font-size: 0.85rem;
+
+  th, td {
+    padding: 0.55rem 0.8rem;
+    text-align: center;
+    border: none;
+    background: none;
+    border-right: 1px solid #d0dce8;
+
+    &:last-child { border-right: none; }
+  }
+
+  thead th {
+    background: $color-prim;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-right-color: rgba(255,255,255,0.25);
+
+    &.tool-col { text-align: left; font-size: 0.85rem; }
+  }
+
+  tbody {
+    tr:nth-child(odd) td { background: $bg-alt2; }
+    tr:nth-child(even) td { background: white; }
+    tr.comparison-highlight td { background: $bg-green; border-left: 4px solid $color-green; }
+  }
+
+  .tool-col  { text-align: left; min-width: 10rem; }
+  .tool-name { font-weight: bold; color: $color-prim; }
+  .tool-type { font-size: 0.7rem; color: $color-prim-light; font-style: italic; }
+
+  .check-yes     { color: $color-green; font-size: 1.3rem; }
+  .check-no      { color: $color-red;   font-size: 1.3rem; }
+  .check-partial { color: $color-sec;   font-size: 1.2rem; }
+}
+
+.comparison-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: $color-sec;
+  font-weight: bold;
+  margin-top: 0.6rem;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 2. Traqula Pipeline
+// ═══════════════════════════════════════════════════════════════
+.pipeline {
+  @include diagram-root(0.8rem);
+
+  &__labels {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+    font-size: 0.7rem;
+  }
+  &__label-ast { color: $color-green; font-weight: bold; }
+  &__label-alg { color: $color-sec; }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    justify-content: center;
+  }
+
+  &__box {
+    @include flow-box;
+    white-space: nowrap;
+
+    &--query {
+      background: $bg-blue;
+      border: 2px solid $color-prim;
+      min-width: 8rem;
+
+      .pipeline__title  { font-weight: bold; color: $color-prim; font-size: 0.75rem; }
+      .pipeline__detail { font-size: 0.65rem; color: $color-prim-light; font-style: italic; }
+    }
+
+    &--engine {
+      background: $color-prim;
+      color: white;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    &--ast {
+      background: $bg-green;
+      border: 2px solid $color-green;
+      min-width: 8rem;
+
+      .pipeline__title { font-weight: bold; color: $color-prim; }
+      .pipeline__sub   { font-size: 0.65rem; color: $color-green; }
+    }
+
+    &--algebra {
+      background: $bg-orange;
+      border: 2px solid $color-sec;
+      border-radius: 8px;
+      padding: 0.5rem 0.8rem;
+      text-align: center;
+      min-width: 9rem;
+
+      .pipeline__title { font-weight: bold; color: $color-prim; }
+      .pipeline__sub   { font-size: 0.65rem; color: $color-sec; }
+    }
+  }
+
+  &__arrow {
+    @include diagram-arrow;
+    padding: 0 0.2rem;
+
+    &--green { color: $color-green; }
+    &--dashed {
+      font-size: 0.7rem;
+      color: $color-green;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__algebra-branch {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.3rem;
+  }
+
+  &__algebra-arrow-down {
+    color: $color-sec;
+    font-size: 0.7rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__ts-badge {
+    background: white;
+    border: 1.5px solid $color-prim-light;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    text-align: center;
+    font-size: 0.7rem;
+
+    strong { color: $color-prim; }
+    span   { color: $color-prim-light; display: block; }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 3. Representations Diagram
+// ═══════════════════════════════════════════════════════════════
+.representations {
+  @include diagram-root;
+
+  &__columns {
+    display: grid;
+    grid-template-columns: 1fr auto 1.2fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  &__col {
+    @include colored-card(10px);
+
+    // Color variants
+    $col-colors: (string: $color-prim, ast: $color-green, alg: $color-sec);
+    @each $name, $c in $col-colors {
+      &--#{$name} { @include colored-card-variant($c); }
+    }
+  }
+
+  &__col-header {
+    padding: 0.5rem;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  &__col-body {
+    flex: 1;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: white;
+  }
+
+  &__code-block {
+    background: $bg-blue;
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: $color-prim;
+    line-height: 1.4;
+  }
+
+  &__tree-node {
+    background: $bg-green;
+    border: 1px solid $color-green;
+    border-radius: 4px;
+    padding: 0.15rem 0.4rem;
+    font-size: 0.7rem;
+    color: $color-prim;
+    text-align: center;
+    display: inline-block;
+
+    &--alg { background: $bg-orange; border-color: $color-sec; }
+  }
+
+  &__source-badge {
+    background: $bg-green;
+    border-radius: 5px;
+    padding: 0.3rem;
+    text-align: center;
+    font-size: 0.65rem;
+    color: $color-green;
+    font-weight: bold;
+  }
+
+  &__no-source {
+    background: $bg-red;
+    border: 1px solid $color-red;
+    border-radius: 5px;
+    padding: 0.25rem 0.4rem;
+    font-size: 0.65rem;
+    color: $color-red;
+    text-align: center;
+  }
+
+  &__col-footer {
+    text-align: center;
+    font-size: 0.65rem;
+    font-style: italic;
+    color: $color-prim;
+    padding: 0.3rem;
+    background: white;
+  }
+
+  &__col-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.3rem;
+    gap: 0.8rem;
+  }
+
+  &__arrow-fwd  { @include arrow-badge($bg-blue, $color-prim);   font-size: 0.7rem; }
+  &__arrow-back { @include arrow-badge($bg-green, $color-green);  font-size: 0.65rem; }
+  &__arrow-alg  { @include arrow-badge($bg-orange, $color-sec);   font-size: 0.7rem; }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    border: 1.5px solid $color-prim;
+    border-radius: 8px;
+    padding: 0.4rem;
+  }
+
+  &__bottom-item {
+    border-radius: 6px;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.65rem;
+
+    &--ast     { background: $bg-green;  strong { color: $color-green; } }
+    &--alg     { background: $bg-orange; strong { color: $color-sec; } }
+    &--support { background: $bg-blue;   strong { color: $color-prim; } }
+  }
+
+  &__version-pill {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    color: white;
+    font-size: 0.6rem;
+    margin: 0.1rem;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 4. Modular Rule Map
+// ═══════════════════════════════════════════════════════════════
+.rulemap {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.6fr;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+
+  &__section-title {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: $color-prim-light;
+    margin-bottom: 0.3rem;
+  }
+
+  // Dictionary
+  &__dict {
+    border: 1.5px solid $color-prim-light;
+    border-radius: 8px;
+    padding: 0.4rem;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__dict-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0.4rem;
+    border-radius: 5px;
+    font-size: 0.7rem;
+
+    &--default { background: $bg-alt; }
+    &--alt     { background: $bg-blue; }
+    &--patched { background: $bg-orange; border: 1.5px solid $color-sec; }
+    &--added   { background: $bg-green;  border: 1.5px solid $color-green; }
+  }
+
+  &__dict-name { font-weight: bold; color: $color-prim; }
+  &__dict-desc { font-size: 0.6rem; color: $color-prim-light; }
+  &__dict-tag  { font-size: 0.6rem; font-weight: bold;
+    &--patch { color: $color-sec; }
+    &--add   { color: $color-green; }
+  }
+
+  // Builder operations
+  &__ops {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  &__op {
+    border-radius: 8px;
+    padding: 0.4rem 0.5rem;
+    border-width: 2px;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    // Variants via loop
+    $op-variants: ("add": ($bg-green, $color-green), "patch": ($bg-orange, $color-sec), "remove": ($bg-red, $color-red));
+    @each $name, $pair in $op-variants {
+      &--#{$name} {
+        background: list.nth($pair, 1);
+        border-color: list.nth($pair, 2);
+        .rulemap__op-symbol { color: list.nth($pair, 2); }
+        .rulemap__op-desc   { color: list.nth($pair, 2); }
+      }
+    }
+  }
+
+  &__op-symbol { font-size: 1.2rem; font-weight: bold; flex-shrink: 0; }
+  &__op-text   { display: flex; flex-direction: column; }
+  &__op-method { font-weight: bold; color: $color-prim; font-size: 0.75rem; }
+  &__op-desc   { font-size: 0.6rem; }
+
+  // Right column
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &__code {
+    background: $color-prim;
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-family: monospace;
+    font-size: 0.65rem;
+    line-height: 1.5;
+    color: white;
+    flex: 1;
+
+    .kw, .cm { color: #7ec8e3; }
+    .hl      { color: #ffa07a; }
+  }
+
+  &__depgraph {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  &__depnode {
+    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    border-width: 1.5px;
+    border-style: solid;
+
+    &--default { background: $bg-blue;   border-color: $color-prim; color: $color-prim; font-weight: bold; }
+    &--patched { background: $bg-orange; border-color: $color-sec;  color: $color-sec; }
+    &--dashed  { background: $bg-orange; border-color: $color-sec;  border-style: dashed; color: $color-sec; }
+  }
+
+  &__dep-arrow { color: $color-prim-light; font-size: 0.8rem; }
+  &__dep-label { font-size: 0.55rem; color: $color-sec; }
+
+  &__build-bar {
+    background: rgba($color-prim-light, 0.15);
+    border-radius: 4px;
+    padding: 0.25rem;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: $color-prim;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 5. Round-Trip Flow
+// ═══════════════════════════════════════════════════════════════
+.roundtrip {
+  @include diagram-root;
+
+  &__stages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    gap: 0;
+    color: $color-prim-light;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+
+    > span { flex: 1; text-align: center; }
+  }
+
+  &__flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    justify-content: center;
+  }
+
+  &__box {
+    @include flow-box;
+
+    &--query {
+      background: white;
+      border: 2px solid $color-prim;
+      min-width: 8.5rem;
+
+      .roundtrip__title { font-weight: bold; color: $color-prim; font-size: 0.75rem; }
+      code { font-size: 0.65rem; color: $color-prim; }
+    }
+
+    &--engine {
+      background: $color-prim;
+      color: white;
+      padding: 0.5rem 0.8rem;
+
+      .roundtrip__title { font-weight: bold; font-size: 0.8rem; }
+      .roundtrip__sub   { font-size: 0.6rem; color: #7ec8e3; }
+    }
+
+    &--ast {
+      background: $bg-green;
+      border: 2px solid $color-green;
+      min-width: 9rem;
+      display: flex;
+      flex-direction: column;
+
+      .roundtrip__title { font-weight: bold; color: $color-prim; font-size: 0.75rem; }
+    }
+  }
+
+  &__ast-fields {
+    font-size: 0.65rem;
+    color: $color-prim-light;
+    text-align: left;
+    padding: 0.1rem 0.2rem;
+    line-height: 1.3;
+
+    .src { color: $color-green; font-weight: bold; }
+  }
+
+  &__transform {
+    margin-top: 0.3rem;
+    background: $bg-orange;
+    border: 1.5px solid $color-sec;
+    border-radius: 6px;
+    padding: 0.2rem 0.3rem;
+    font-size: 0.7rem;
+    color: $color-sec;
+    text-align: center;
+  }
+
+  &__arrow {
+    @include diagram-arrow($color-prim, 1.1rem);
+    padding: 0 0.15rem;
+    margin-top: 0.7rem;
+  }
+
+  &__output-hl { color: $color-sec; font-weight: bold; }
+
+  &__legend {
+    border: 1.5px solid $color-green;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    background: white;
+  }
+
+  &__legend-title {
+    font-weight: bold;
+    color: $color-prim;
+    font-size: 0.75rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+
+  &__legend-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
+  }
+
+  &__legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+
+    &--preserved { background: $color-green; }
+    &--changed   { background: $color-sec; }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 6. Adoption Stats
+// ═══════════════════════════════════════════════════════════════
+.adoption {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+
+  // Hero card
+  &__hero {
+    grid-row: 1 / 3;
+    @include colored-card;
+    border: 2px solid $color-prim;
+    background: $color-prim;
+  }
+
+  &__hero-header {
+    background: $color-prim;
+    color: white;
+    padding: 0.6rem;
+    text-align: center;
+
+    .hero-title { font-size: 1.3rem; font-weight: bold; }
+    .hero-sub   { font-size: 0.7rem; }
+  }
+
+  &__hero-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    text-align: center;
+    gap: 0.3rem;
+    background: white;
+
+    .hero-label  { font-weight: bold; color: $color-prim; font-size: 0.9rem; }
+    .hero-detail { color: $color-prim-light; font-size: 0.75rem; line-height: 1.5; }
+  }
+
+  &__hero-badge {
+    background: $bg-green;
+    border: 1.5px solid $color-green;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    color: $color-green;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+
+  // Stat cards — shared base
+  &__stat {
+    @include colored-card;
+  }
+
+  &__stat-header {
+    padding: 0.4rem;
+    text-align: center;
+    color: white;
+
+    .stat-number { font-size: 1.6rem; font-weight: bold; }
+    .stat-label  { font-size: 0.65rem; }
+  }
+
+  &__stat-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    text-align: center;
+    color: $color-prim-light;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    background: white;
+  }
+
+  // Stat color variants (loop)
+  $stat-colors: (tests: $color-green, coverage: $color-prim-light, license: $color-sec, sustain: $color-prim);
+  @each $name, $c in $stat-colors {
+    &__stat--#{$name} { @include colored-card-variant($c); }
+  }
+}
