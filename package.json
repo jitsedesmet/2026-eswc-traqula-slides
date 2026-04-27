@@ -17,7 +17,7 @@
     "dev": "npm run scss && shower serve",
     "pdf": "npm run scss && shower pdf -o ./img/slides.pdf",
     "archive": "npm run scss && shower archive",
-    "build": "npm run scss && shower bundle"
+    "build": "npm run scss && shower bundle -o bundled"
   },
   "dependencies": {
     "@shower/core": "^3.5.0",
