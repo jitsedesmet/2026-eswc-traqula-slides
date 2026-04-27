@@ -5,7 +5,7 @@
       "dockerfile": "Dockerfile"
   },
   "mounts": [
-    "source=${localWorkspaceFolder}/.devcontainer/config.json,target=/home/node/.copilot/config.json,type=bind",
+    "source=${localWorkspaceFolder}/.devcontainer/.copilot,target=/home/node/.copilot/,type=bind",
   ],
   forwardPorts: [8080],
   "remoteUser": "node",
