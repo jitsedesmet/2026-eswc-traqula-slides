@@ -32,6 +32,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Allow Chrome sandbox 🛡️
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
       - name: Install and Build 🔧
         run: |
           npm install
