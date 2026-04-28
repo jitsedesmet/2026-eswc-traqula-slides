@@ -198,9 +198,9 @@ The biggest Trump of Traqula is if Flexibility.
 SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
                     ( ( Var | ( '(' Expression 'AS' Var ')' ) )+ | '*' )</code></pre>
 
-    <img style="height: 4rem; margin: 1rem;"
+    <img class="next" style="height: 4rem; margin: 1rem;"
          src="img/traqula-SelectQuery.svg">
-    <img style="height: 54%"
+    <img class="next" style="height: 54%"
          src="img/traqula-SelectClause.svg">
 
     <pre
@@ -227,6 +227,57 @@ SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
          src="img/traqula-SelectQuery.svg">
     <img style="height: 54%"
          src="img/traqula-SelectClause-1-2.svg">
+
+    <pre
+            style="position:absolute; right: 5rem; top: 50%"
+    ><code style="font-size: 1rem; line-height: 1.3em">SelECT * {
+    ?s   ?p ?o
+}</code></pre>
+
+    <span class="traqula-brand"></span>
+    <span class="place bottom right num"></span>
+</section>
+
+<!-- Very Playing with the blocks. -->
+<section id="builder" class="slide" rel="schema:hasPart" resource="#builder">
+    <h2 property="schema:name">Builder-based Dependency Injection</h2>
+
+    <!-- EBNF format -->
+    <pre style="margin: 0 0 0.5rem 0;"
+    ><code style="font-size: 1rem; line-height: 1.3em">SelectQuery  ::= SelectClause DatasetClause* WhereClause SolutionModifier
+SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
+                    ( ( Var | ( '(' <span style="background: #ecff30">Expression1.2</span> 'AS' Var ')' ) )+ | '*' )</code></pre>
+
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+        <pre><code style="font-size: 0.5rem; line-height: 1.3em">export const selectClauseCopy: SparqlGrammarRule<'selectClause', void> = {
+  name: 'selectClause',
+  impl: $ => () => {
+    $.CONSUME(l.select);
+    $.OPTION(() => $.OR1([
+      { ALT: () => $.CONSUME(l.distinct) },
+      { ALT: () => $.CONSUME(l.reduced) },
+    ]));
+    $.OR2([
+      { ALT: () => $.CONSUME(l.symbols.star) },
+      { ALT: () => {
+        $.AT_LEAST_ONE(() => $.OR3([
+          { ALT: () => $.SUBRULE1(var_) },
+          { ALT: () => {
+            $.CONSUME(l.symbols.LParen);
+            $.SUBRULE1(expression);
+            $.CONSUME(l.as);
+            $.SUBRULE2(var_);
+            $.CONSUME(l.symbols.RParen);
+          } },
+        ]));
+      } },
+    ]);
+  },
+};</code></pre>
+    </div>
+
+    <img style="height: 7rem; margin: 1rem; object-fit: contain;"
+         src="img/builder-en.png">
 
     <pre
             style="position:absolute; right: 5rem; top: 50%"
