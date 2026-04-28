@@ -319,7 +319,13 @@ SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
                     <span class="hl">&nbsp; .patchRule(expression)</span><br>
                     <span class="hl-green">&nbsp; .addRule(builtInTriple)</span><br>
                     <span class="hl-red">&nbsp; .removeRule(lanTag)</span><br>
-                    <span class="hl-green">&nbsp; .addRule(lanTag)</span>
+                    <span class="hl-green">&nbsp; .addRule(lanTag)</span><br>
+                    <br>
+                    <span class="kw">const</span> parser = parserBuilderSparql1_2<br>
+                    &nbsp; .build({ tokenVocabulary: myTokens })<br>
+                    <br>
+                    <span class="kw">const</span> ast = parser<br>
+                    &nbsp; .expression(<span style="color: #ffd700;">`TRIPLE ( ex:s ex:p ex:o )`</span>)
                 </div>
             </div>
         </div>
@@ -331,6 +337,7 @@ SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
                 border: #267499 3px solid; border-radius: 1em; align-self: center; text-align: center;">
         Compose parsers, generators & transformers<br>
         <span style="font-style: italic">Facilitating language experimentation</span>
+        <!-- And creates self documenting parsers etc. -->
     </div>
 
     <a style="position: absolute; bottom: 1rem; left: 9rem; display: flex; flex-direction: column;align-items: center;"
