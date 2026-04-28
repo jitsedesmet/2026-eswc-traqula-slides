@@ -14,7 +14,8 @@
   "scripts": {
     "scss": "sass styles/presentation-specific.scss styles/presentation-specific.css --no-source-map",
     "scss:watch": "sass --watch styles/presentation-specific.scss styles/presentation-specific.css --no-source-map",
-    "dev": "npm run scss && shower serve",
+    "shower:serve": "shower serve",
+    "dev": "npm run scss && run-p scss:watch shower:serve",
     "pdf": "npm run scss && shower pdf -o ./img/slides.pdf",
     "archive": "npm run scss && shower archive",
     "build": "npm run scss && shower bundle -o bundled"
@@ -25,7 +26,8 @@
   },
   "devDependencies": {
     "@shower/cli": "^1.1.0",
-    "sass": "^1.99.0"
+    "sass": "^1.99.0",
+    "npm-run-all": "^4.1.5"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

@@ -243,47 +243,91 @@ SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
     <h2 property="schema:name">Builder-based Dependency Injection</h2>
 
     <!-- EBNF format -->
-    <pre style="margin: 0 0 0.5rem 0;"
+    <pre style="margin: 0 0 01rem 0;"
     ><code style="font-size: 1rem; line-height: 1.3em">SelectQuery  ::= SelectClause DatasetClause* WhereClause SolutionModifier
 SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
                     ( ( Var | ( '(' <span style="background: #ecff30">Expression1.2</span> 'AS' Var ')' ) )+ | '*' )</code></pre>
 
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-        <pre><code style="font-size: 0.5rem; line-height: 1.3em">export const selectClauseCopy: SparqlGrammarRule<'selectClause', void> = {
-  name: 'selectClause',
-  impl: $ => () => {
-    $.CONSUME(l.select);
-    $.OPTION(() => $.OR1([
-      { ALT: () => $.CONSUME(l.distinct) },
-      { ALT: () => $.CONSUME(l.reduced) },
-    ]));
-    $.OR2([
-      { ALT: () => $.CONSUME(l.symbols.star) },
-      { ALT: () => {
-        $.AT_LEAST_ONE(() => $.OR3([
-          { ALT: () => $.SUBRULE1(var_) },
-          { ALT: () => {
-            $.CONSUME(l.symbols.LParen);
-            $.SUBRULE1(expression);
-            $.CONSUME(l.as);
-            $.SUBRULE2(var_);
-            $.CONSUME(l.symbols.RParen);
-          } },
-        ]));
-      } },
-    ]);
-  },
-};</code></pre>
+    <div class="diagram-wrap" role="img"
+         aria-label="Builder-based dependency injection: named rule map, add/patch/remove operations, and TypeScript builder API">
+        <div class="rulemap">
+            <!-- Rule Dictionary -->
+            <div>
+                <div class="rulemap__section-title">Rule Dictionary</div>
+                <div class="rulemap__dict">
+                    <div class="rulemap__dict-entry rulemap__dict-entry--default">
+                        <span><span class="rulemap__dict-name">SelectQuery</span></span>
+                        <span class="rulemap__dict-desc">→ SelectClause · ...</span>
+                    </div>
+                    <div class="rulemap__dict-entry rulemap__dict-entry--default">
+                        <span class="rulemap__dict-name">SelectClause</span>
+                        <span class="rulemap__dict-desc">→ Var · Expression</span>
+                    </div>
+                    <div class="rulemap__dict-entry rulemap__dict-entry--patched">
+                        <span class="rulemap__dict-name">Expression</span>
+                        <span class="rulemap__dict-tag rulemap__dict-tag--patch">~patched</span>
+                    </div>
+                    <div class="rulemap__dict-entry rulemap__dict-entry--added">
+                        <span class="rulemap__dict-name">Builtin Triple</span>
+                        <span class="rulemap__dict-tag rulemap__dict-tag--add">+added</span>
+                    </div>
+                    <div class="rulemap__dict-entry rulemap__dict-entry--removed">
+                        <a class="rulemap__dict-name pure" href="https://www.w3.org/TR/sparql11-query/#rLANGTAG">LANG_TAG</a>
+                        <span class="rulemap__dict-tag rulemap__dict-tag--delete">-removed</span>
+                    </div>
+                    <div class="rulemap__dict-entry rulemap__dict-entry--added">
+                        <a class="rulemap__dict-name pure" href="https://www.w3.org/TR/sparql12-query/#rLANG_DIR">LANG_DIR</a>
+                        <span class="rulemap__dict-tag rulemap__dict-tag--add">+added</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Builder Operations -->
+            <div>
+                <div class="rulemap__section-title">Builder Operations</div>
+                <div class="rulemap__ops">
+                    <div class="rulemap__op rulemap__op--add">
+                        <span class="rulemap__op-symbol">+</span>
+                        <div class="rulemap__op-text">
+                            <span class="rulemap__op-method">.addRule(…)</span>
+                            <span class="rulemap__op-desc">Register a new rule module</span>
+                        </div>
+                    </div>
+                    <div class="rulemap__op rulemap__op--patch">
+                        <span class="rulemap__op-symbol">~</span>
+                        <div class="rulemap__op-text">
+                            <span class="rulemap__op-method">.patchRule(…)</span>
+                            <span class="rulemap__op-desc">Replace a rule's behavior</span>
+                        </div>
+                    </div>
+                    <div class="rulemap__op rulemap__op--remove">
+                        <span class="rulemap__op-symbol">−</span>
+                        <div class="rulemap__op-text">
+                            <span class="rulemap__op-method">.removeRule(…)</span>
+                            <span class="rulemap__op-desc">Drop a rule (restrict language)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Code + Dependency Graph -->
+            <div class="rulemap__right">
+                <div class="rulemap__section-title">TypeScript Example</div>
+                <div class="rulemap__code">
+                    <span class="kw">const</span> parserBuilderSparql1_2 = <span style="color: #ffd700;">ParserBuilder</span><br>
+                    &nbsp; .create(parserBuilderSparql1_1)<br>
+                    <span class="hl">&nbsp; .patchRule(expression)</span><br>
+                    <span class="hl-green">&nbsp; .addRule(builtInTriple)</span><br>
+                    <span class="hl-red">&nbsp; .removeRule(lanTag)</span><br>
+                    <span class="hl-green">&nbsp; .addRule(lanTag)</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <img style="height: 7rem; margin: 1rem; object-fit: contain;"
-         src="img/builder-en.png">
 
-    <pre
-            style="position:absolute; right: 5rem; top: 50%"
-    ><code style="font-size: 1rem; line-height: 1.3em">SelECT * {
-    ?s   ?p ?o
-}</code></pre>
+<!--    <img style="height: 1rem; margin: 1rem; object-fit: contain;"-->
+<!--         src="img/builder-en.png">-->
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>

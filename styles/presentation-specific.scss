@@ -3,6 +3,7 @@
 // ═══════════════════════════════════════════════════════════════
 @use "sass:list";
 @use "sass:map";
+@use "sass:color";
 
 $color-prim:       #1a4e66;
 $color-prim-light: #267499;
@@ -299,7 +300,6 @@ $pill-colors: (
 // Diagram wrapper — shared by all HTML diagrams
 // ═══════════════════════════════════════════════════════════════
 .diagram-wrap {
-  flex: 1;
   min-height: 0;
   width: 100%;
   display: flex;
@@ -307,7 +307,7 @@ $pill-colors: (
   justify-content: center;
   overflow: hidden;
   box-sizing: border-box;
-  margin: auto 0;
+  margin: 2rem 0 0 0;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -648,6 +648,7 @@ $pill-colors: (
     &--alt     { background: $bg-blue; }
     &--patched { background: $bg-orange; border: 1.5px solid $color-sec; }
     &--added   { background: $bg-green;  border: 1.5px solid $color-green; }
+    &--removed { background: $bg-red;  border: 1.5px solid $color-red; }
   }
 
   &__dict-name { font-weight: bold; color: $color-prim; }
@@ -655,6 +656,7 @@ $pill-colors: (
   &__dict-tag  { font-size: 0.6rem; font-weight: bold;
     &--patch { color: $color-sec; }
     &--add   { color: $color-green; }
+    &--delete   { color: $color-red; }
   }
 
   // Builder operations
@@ -709,6 +711,8 @@ $pill-colors: (
 
     .kw, .cm { color: #7ec8e3; }
     .hl      { color: #ffa07a; }
+    .hl-green {color: color.adjust($color-green, $lightness: +20%); }
+    .hl-red   {color: color.adjust($color-red, $lightness: +10%); }
   }
 
   &__depgraph {
