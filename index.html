@@ -93,7 +93,7 @@
 
 <section id="federation-challenge" class="slide" rel="schema:hasPart" resource="#federation-challenge"
          style="display: flex; flex-direction: column;">
-    <h2 property="schema:name">One query <br> Four incompatible endpoints</h2>
+    <h2 property="schema:name">One query — Four Languages</h2>
     <pre style="position: absolute; right: 1rem; top: 10rem;"><code style="font-size: 0.6rem; line-height: 1.2em;">SELECT ?person ?gmt ?certain
 WHERE {
   ?r rdf:reifies &lt;&lt;( ?person ex:birthDate ?dateTime )&gt;&gt; ;
@@ -107,47 +107,6 @@ WHERE {
     <p class="next" style="text-align: center; margin: 0.4rem 0 0; font-size: 0.95em; color: var(--color-prim-light);">
         <strong>Bridging is essential</strong>
     </p>
-
-    <span class="traqula-brand"></span>
-    <span class="place bottom right num"></span>
-</section>
-
-<section  id="sparql-dialects" class="slide" rel="schema:hasPart" resource="#sparql-dialects"
-         style="display: flex; flex-direction: column;">
-    <h2 property="schema:name">SPARQL is not one language</h2>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; font-size: 0.95rem;">
-        <div style="grid-column: 1 / -1; display: flex; gap: 0.6rem; flex-wrap: wrap;">
-            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.0</span>
-            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.1</span>
-            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.2 Basic</span>
-            <span style="background: #dce8f0; border: 1.5px solid #1a4e66; border-radius: 6px; padding: 0.2rem 0.6rem; font-weight: bold; color: #1a4e66;">SPARQL 1.2 Full</span>
-        </div>
-        <div style="background: #e8f7ee; border: 1.5px solid #2a9d5c; border-radius: 8px; padding: 0.5rem 0.7rem;">
-            <strong style="color: #2a9d5c; font-size: 0.8rem;">Vendor extensions</strong>
-            <ul style="margin: 0.2rem 0 0; padding-left: 1.2em; font-size: 0.85rem; color: #267499;">
-                <li>Jena: <code>CONSTRUCT GRAPH</code></li>
-                <li>Virtuoso: full-text search</li>
-                <li>Oxigraph: <code>ADJUST</code> builtin</li>
-            </ul>
-        </div>
-        <div style="background: #fff0e0; border: 1.5px solid #e26c22; border-radius: 8px; padding: 0.5rem 0.7rem;">
-            <strong style="color: #e26c22; font-size: 0.8rem;">Feature restrictions</strong>
-            <ul style="margin: 0.2rem 0 0; padding-left: 1.2em; font-size: 0.85rem; color: #267499;">
-                <li>Expensive operators removed (e.g. <code>OPTIONAL</code>)</li>
-                <li>Subset implementations of the spec</li>
-            </ul>
-        </div>
-    </div>
-
-
-
-    <!--
-        Traqula has been used for query rewriting work, but its flexible nature also allows users to introduce independent optimizations,
-    Comunica for example uses Traqula, and was able to add
-    [Nodes](https://github.com/comunica/comunica/blob/0a98978cea136635b647d54d2a4b74a8ed791a4c/packages/utils-algebra/lib/Algebra.ts#L178-L183)
-    as an operator. There is also the Distinct Term operator that functions much the same as Comunica Traqula
-    -->
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
@@ -211,9 +170,46 @@ WHERE {
     <h2 property="schema:name">Overview</h2>
     <ul>
         <li><h3 style="opacity: 0.5">Problem</h3></li>
-        <li><h3>Traqula</h3></li>
+        <li><h3 style="margin-bottom: 1rem">Traqula</h3>
+            <ul>
+                <li style="margin-bottom: 0.5em">Flexible</li>
+                <li style="margin-bottom: 0.5em">Round Tripping</li>
+                <li style="margin-bottom: 0.5em">Language Agnostic</li>
+                <li style="margin-bottom: 0.5em">Web Based</li>
+            </ul>
+        </li>
         <li><h3 style="opacity: 0.8">Performance</h3></li>
     </ul>
+
+    <span class="traqula-brand"></span>
+    <span class="place bottom right num"></span>
+</section>
+
+
+<!--
+The biggest Trump of Traqula is if Flexibility.
+-->
+<section id="flexible" class="slide" rel="schema:hasPart" resource="#flexible">
+    <h2 property="schema:name">SPARQL: LL(1) grammar; as EBNF</h2>
+
+    <!-- EBNF format -->
+    <pre><code style="font-size: 1rem; line-height: 1.3em">[156] iri           ::= IRIREF | PrefixedName
+[157] PrefixedName  ::= PNAME_LN | PNAME_NS
+...
+[159] IRIREF        ::= '&lt;' ([^&lt;&gt;"{}|^`\]-[#x00-#x20])* '&gt;'
+[160] PNAME_NS      ::= PN_PREFIX? ':'
+[161] PNAME_LN      ::= PNAME_NS PN_LOCAL
+...
+[184] PN_CHARS_BASE ::= [A-Z] | [a-z] | [#x00C0-#x00D6] | [#x00D8-#x00F6] | [#x00F8-#x02FF]
+                          | [#x0370-#x037D] | [#x037F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F]
+                          | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD]
+                          | [#x10000-#xEFFFF]
+[185] PN_CHARS_U    ::= PN_CHARS_BASE | '_'
+...
+[187] PN_CHARS      ::= PN_CHARS_U | '-' | [0-9] | #x00B7 | [#x0300-#x036F] | [#x203F-#x2040]
+[188] PN_PREFIX     ::= PN_CHARS_BASE ((PN_CHARS|'.')* PN_CHARS)?
+[189] PN_LOCAL      ::= (PN_CHARS_U | ':' | [0-9] | PLX ) ((PN_CHARS | '.' | ':' | PLX)*
+                          (PN_CHARS | ':' | PLX) )?</code></pre>
 
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
