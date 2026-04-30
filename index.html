@@ -185,16 +185,92 @@ WHERE {
     <span class="place bottom right num"></span>
 </section>
 
+
+<section id="mist" class="slide" rel="schema:hasPart" resource="#mist">
+    <h2 property="schema:name">Demystifying parsers</h2>
+
+    <object class="structures-img" data="img/traqula-query-representations.svg" type="image/svg+xml"></object>
+    <div class="hide-after" id="hide-block-1"></div>
+
+    <span class="traqula-brand"></span>
+    <span class="place bottom right num"></span>
+</section>
+
+
 <!--
 What Traqula actually does.
 -->
 <section id="structures" class="slide" rel="schema:hasPart" resource="#structures">
-    <h2 property="schema:name">Traqula' parse results</h2>
+    <h2 property="schema:name">Demystifying parsers</h2>
 
-    <object style="width: 80%; align-self: center"
-            data="img/traqula-representations.svg" type="image/svg+xml"></object>
+    <div class="grid-body">
+        <!-- We choose to parse to an AST instead of a CST because we want Traqula to be able to bridge between languages.
+             This bridging can be accompished by creating a unifying AST structure, but that means declaring the structure,
+             to the extent possible, independently of the grammar rules. -->
+        <object class="structures-img" data="img/traqula-representations.svg" type="image/svg+xml"></object>
+
+        <pre class="q-string"><code>PREFIX ex: &lt;ex://&gt;
+SelECT Distinct * {
+    ?s   ?p ex:a
+}</code></pre>
+
+            <pre class="rep-string"><code>Prefix PName_NS
+IRIREF Select
+Distinct Wildcard
+LCurly Var Var
+PNAME_LN RCurly</code></pre>
+    </div>
 
 
+    <span class="traqula-brand"></span>
+    <span class="place bottom right num"></span>
+</section>
+
+<section id="structures-bis" class="slide" rel="schema:hasPart" resource="#structures-bis">
+    <h2 property="schema:name"><span style="font-style: italic">Parse?</span> To What? ASTs?</h2>
+
+    <div class="grid-body">
+        <!-- We choose to parse to an AST instead of a CST because we want Traqula to be able to bridge between languages.
+             This bridging can be accompished by creating a unifying AST structure, but that means declaring the structure,
+             to the extent possible, independently of the grammar rules. -->
+        <object class="structures-img-bis" data="img/traqula-representations.svg" type="image/svg+xml"></object>
+
+        <pre class="q-string"><code>PREFIX ex: &lt;ex://&gt;
+SelECT Distinct * {
+    ?s   ?p ex:a
+}</code></pre>
+
+        <pre class="rep-string"><code>Prefix PName_NS
+IRIREF Select
+Distinct Wildcard
+LCurly Var Var
+PNAME_LN RCurly</code></pre>
+
+        <pre class="ast-str"><code>type: query
+subType: select
+distinct: true
+context:
+  - type: contextDef
+    subType prefix
+    key: ex
+    value: 'ex://'
+where:
+  type: pattern
+  subType: group
+  patterns:
+    - type: pattern
+      subType: bgp
+      triples:
+        - type: triple
+          subject:
+            type: term
+            subType: variable
+            value: s
+            loc: ...
+          predicate: ...
+          object: ...</code></pre>
+
+    </div>
     <span class="traqula-brand"></span>
     <span class="place bottom right num"></span>
 </section>
@@ -211,7 +287,11 @@ The biggest Trump of Traqula is if Flexibility.
     ><code style="font-size: 1rem; line-height: 1.3em">SelectQuery  ::= SelectClause DatasetClause* WhereClause SolutionModifier
 SelectClause ::= 'SELECT' ( 'DISTINCT' | 'REDUCED' )?
                     ( ( Var | ( '(' Expression 'AS' Var ')' ) )+ | '*' )</code></pre>
-
+    <!--
+    Here you can say that the CST is just the embodiment of the tree you walked
+    We choose to parse to an AST instead of a CST because we want Traqula to be able to bridge between languages.
+         This bridging can be accompished by creating a unifying AST structure, but that means declaring the structure,
+         to the extent possible, independently of the grammar rules. -->
     <img class="next" style="height: 4rem; margin: 1rem;"
          src="img/traqula-SelectQuery.svg">
     <img class="next" style="height: 54%"
